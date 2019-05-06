@@ -6,7 +6,8 @@ import {
   Text, 
   View,
   Button,
-  Image
+  Image,
+  Alert
 } from 'react-native'
 
 import {getAllSwatches} from 'react-native-palette'
@@ -38,6 +39,24 @@ export class Paint extends Component {
       // // 
     }
 
+    alertMe = (a) => {
+      Alert.alert(
+        a,
+        'My Alert Msg',
+        [
+          {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+          {
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        {cancelable: false},
+      );
+    }
+
+
     getColor = () => {
       // const person = {
       //   threshhold: false,
@@ -53,9 +72,10 @@ export class Paint extends Component {
             swatches.sort((a, b) => {
               return b.population - a.population;
             });
-            swatches.forEach((swatch) => {
-              console.log(swatch.swatchInfo);
-            });
+            this.alertMe(JSON.stringify(swatches))
+            // swatches.forEach((swatch) => {
+            //   console.log(swatch.swatchInfo);
+            // });
           }
         });
       });
