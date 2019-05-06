@@ -26,7 +26,7 @@ export class Login extends Component {
         <ImageBackground 
             source={loginBackgroundPath} 
             style={styles.backgroundImage}
-            opacity='.6'
+            // opacity='.6'
         >
             <Image source={loginLogoPath}/>
             <Header title='Artists Block'/>
