@@ -138,6 +138,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-palette')
+    implementation project(':react-native-image-picker')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-screens')
     implementation project(':react-native-gesture-handler')

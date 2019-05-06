@@ -9,6 +9,9 @@ import {
   Image
 } from 'react-native'
 
+import {getAllSwatches} from 'react-native-palette'
+import ImagePicker from 'react-native-image-picker'
+
 export class Paint extends Component {
     constructor(props){
         super(props);
@@ -36,12 +39,26 @@ export class Paint extends Component {
     }
 
     getColor = () => {
-      const person = {
-        threshhold: false,
-        quality: "low"
-      }
+      // const person = {
+      //   threshhold: false,
+      //   quality: "low"
+      // }
       console.log("inGetColor")
-      
+      ImagePicker.launchImageLibrary({}, (response)  => {
+        var path =  Platform.OS === 'ios' ? response.origURL : response.path;
+        getAllSwatches({}, path, (error, swatches) => {
+          if (error) {
+            console.log(error);
+          } else {
+            swatches.sort((a, b) => {
+              return b.population - a.population;
+            });
+            swatches.forEach((swatch) => {
+              console.log(swatch.swatchInfo);
+            });
+          }
+        });
+      });
     }
 
     render() {

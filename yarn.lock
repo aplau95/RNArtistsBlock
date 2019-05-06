@@ -4367,6 +4367,14 @@ react-native-image-color-picker@^1.0.4:
     image-color-picker "^1.0.0"
     react-native-fetch-blob "^0.10.8"
 
+react-native-image-picker@^0.28.1:
+  version "0.28.1"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.28.1.tgz#1127460522e0c9741fc62f3d040271d298fb6a6e"
+
+react-native-palette@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-palette/-/react-native-palette-0.3.2.tgz#56579d222618678f4b650100e2d7796560480da5"
+
 react-native-ratings@^6.3.0:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.3.1.tgz#4e4bd87f376423dc62c933f570fc1932c78adaa4"
