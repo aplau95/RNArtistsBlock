@@ -138,6 +138,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-firebase')
     implementation project(':react-native-palette-full')
     implementation project(':react-native-palette')
     implementation project(':react-native-image-picker')

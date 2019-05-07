@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>981029834623-tcl0me0prd461ldj03fa5alh3karb7cb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.981029834623-tcl0me0prd461ldj03fa5alh3karb7cb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD-zmnL7CW3HOR2RzyCmE51cwbSKfJ_zQo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>981029834623</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>artistsBlock</string>
+	<key>PROJECT_ID</key>
+	<string>artistsblockreactnative</string>
+	<key>STORAGE_BUCKET</key>
+	<string>artistsblockreactnative.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:981029834623:ios:0f1e66404309f224</string>
+	<key>DATABASE_URL</key>
+	<string>https://artistsblockreactnative.firebaseio.com</string>
+</dict>
+</plist>

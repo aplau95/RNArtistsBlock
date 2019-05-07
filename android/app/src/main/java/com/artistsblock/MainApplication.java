@@ -3,6 +3,7 @@ package com.artistsblock;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
 import me.jerson.mobile.palette.RNPalettePackage;
 import io.palette.RNPalettePackage;
 import com.imagepicker.ImagePickerPackage;
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFirebasePackage(),
             new RNPalettePackage(),
             new RNPalettePackage(),
             new ImagePickerPackage(),

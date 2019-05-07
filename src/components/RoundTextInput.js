@@ -28,6 +28,7 @@ const RoundTextInput = (props) => {
         bottom: 5
 
       }}
+      onChangeText={props.onChangeText}
       placeholder={props.placeholder}
     />
     </View>

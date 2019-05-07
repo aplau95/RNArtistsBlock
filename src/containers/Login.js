@@ -14,11 +14,13 @@ import {
 
 import RoundTextInput from '../components/RoundTextInput';
 import Header from '../components/Header';
+import firebase from 'react-native-firebase'
 
 const loginBackgroundPath = require('../../assets/loginBackground.jpg');
 const loginLogoPath = require('../../assets/loginLogo.png');
 
 export class Login extends Component {
+    state = { email: '', password: '', errorMessage: null }
     render() {
       const {navigate} = this.props.navigation;
       return (
