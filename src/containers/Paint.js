@@ -7,9 +7,11 @@ import {
   View,
   Button,
   Image,
-  Alert
+  Alert,
+  Dimensions
 } from 'react-native'
 
+// import Palette from 'react-native-palette-full';
 import {getAllSwatches} from 'react-native-palette'
 import ImagePicker from 'react-native-image-picker'
 
@@ -24,10 +26,13 @@ export class Paint extends Component {
           jsonLength: 0,
           // imageUrl: "https://images.unsplash.com/photo-1439930545933-289862b93eb6?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjQzMjI0fQ"
           // imageUrl: "https://media.farandwide.com/1d/f4/1df4065788dc47c082cf829829e71a72.jpg"
-          imageUrl: "../../assets/loginLogo.png"
+          imageUrl: require("../../assets/loginLogo.png"),
+          colors: [],
+          population: []
         }
-        
     }
+
+    
 
     componentDidMount(){
       // const that = this
@@ -57,6 +62,11 @@ export class Paint extends Component {
     }
 
 
+    clearArrays = () => {
+      this.setState({colors : []})
+      this.setState({population : []})
+    }
+
     getColor = () => {
       // const person = {
       //   threshhold: false,
@@ -65,6 +75,11 @@ export class Paint extends Component {
       console.log("inGetColor")
       ImagePicker.launchImageLibrary({}, (response)  => {
         var path =  Platform.OS === 'ios' ? response.origURL : response.path;
+        // var path =  Platform.OS === 'ios' ? response : response;
+        // this.alertMe(JSON.stringify(path))
+        const source = { uri: response.uri };
+        this.setState({imageUrl : source})
+        this.clearArrays()
         getAllSwatches({}, path, (error, swatches) => {
           if (error) {
             console.log(error);
@@ -72,14 +87,31 @@ export class Paint extends Component {
             swatches.sort((a, b) => {
               return b.population - a.population;
             });
-            this.alertMe(JSON.stringify(swatches))
-            // swatches.forEach((swatch) => {
-            //   console.log(swatch.swatchInfo);
-            // });
+            
+            swatches.forEach((swatch) => {
+              // this.alertMe(JSON.stringify((swatch.color)))
+              this.setState({colors: [...this.state.colors, swatch.color]})
+              this.setState({population: [...this.state.population, swatch.population]})
+            });
           }
         });
       });
+      // this.alertMe(JSON.stringify(Palette.getNamedSwatches("../../assets/loginBackground.jpg")))
     }
+
+    getArrays = () => {
+      this.alertMe(JSON.stringify(this.state.colors))
+      this.alertMe(JSON.stringify(this.state.population))
+    }
+
+    colorsList = () => {
+      return this.state.colors.map((data, index) => {
+        return (
+          <View key={index} style={{flex: 1, justifyContent: 'center', alignItems: 'center', width: 100, height: 100, backgroundColor: data}}><Text>{this.state.population[index]}</Text></View>
+        )
+      })
+  
+  }
 
     render() {
       
@@ -99,24 +131,33 @@ export class Paint extends Component {
       //   }
       // };
       
-      
+      const dimensions = Dimensions.get('window')
+      const imageHeight = Math.round(dimensions.width * 9 / 16)
+      const imageWidth = dimensions.width
 
       return (
+        
 
         <View style={styles.container}>
           <Image 
-            style={{width: 200, height: 200}}
+            style={{width: imageWidth, height: imageHeight}}
             // source={{uri: this.state.imageUrl}}
-            source={require('../../assets/loginLogo.png')}
+            source={this.state.imageUrl}
             key={this.state.imageUrl}
           />
+          <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+            {this.colorsList()}
+          </View>
           <Button
             title="hi"
             // onPress={() => this.setState({imageUrl : this.state.data[0].urls.full})}
             onPress={this.getColor}
           />
-          <Text style={styles.instructions}>this is the boilerplate tester for ...</Text>
-          <Text style={styles.instructions}></Text>
+          <Button
+            title="hi"
+            // onPress={() => this.setState({imageUrl : this.state.data[0].urls.full})}
+            onPress={this.getArrays}
+          />
         </View>
       );
     }
@@ -145,11 +186,8 @@ export class Paint extends Component {
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
+      marginTop: 44
+
     },
     instructions: {
       textAlign: 'center',

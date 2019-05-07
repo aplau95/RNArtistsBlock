@@ -4371,6 +4371,10 @@ react-native-image-picker@^0.28.1:
   version "0.28.1"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.28.1.tgz#1127460522e0c9741fc62f3d040271d298fb6a6e"
 
+react-native-palette-full@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-palette-full/-/react-native-palette-full-1.0.6.tgz#3575ccfb6965754ab57766b26c70a622719c78cf"
+
 react-native-palette@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/react-native-palette/-/react-native-palette-0.3.2.tgz#56579d222618678f4b650100e2d7796560480da5"
