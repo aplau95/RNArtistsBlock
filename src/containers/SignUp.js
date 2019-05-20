@@ -39,17 +39,17 @@ export class SignUp extends Component {
         <ImageBackground 
             source={loginBackgroundPath} 
             style={styles.backgroundImage}
-            // opacity='.6'
+            opacity={4/10}
         >
             <Image source={loginLogoPath}/>
             <Header title='Artists Block'/>
-            
+            <Text>{this.state.errorMessage}</Text>
             <RoundTextInput onChangeText={email => this.setState({ email })} width={'80%'} height={50} placeholder={'Email'}/>
             <RoundTextInput onChangeText={password => this.setState({ password })} width={'80%'} height={50} placeholder={'Password'}/>
 
             <Button
                 raised
-                title='Login'
+                title='Sign Up'
                 backgroundColor='#ffffff'
                 onPress={this.handleSignUp}
                 buttonStyle={{
@@ -69,11 +69,13 @@ export class SignUp extends Component {
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#F5FCFF',
+      backgroundColor:'rgba(255,0,0,0.5)'
     },
     backgroundImage: {
         width: '100%',
         height: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        
     },
   });

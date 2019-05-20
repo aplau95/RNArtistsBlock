@@ -21,6 +21,14 @@ const loginLogoPath = require('../../assets/loginLogo.png');
 
 export class Login extends Component {
     state = { email: '', password: '', errorMessage: null }
+
+    handleSignUp = () => {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.state.email, this.state.password)
+          .then(() => this.props.navigation.navigate('SignedIn'))
+          .catch(error => this.setState({ errorMessage: error.message }))
+      }
     render() {
       const {navigate} = this.props.navigation;
       return (
@@ -28,7 +36,7 @@ export class Login extends Component {
         <ImageBackground 
             source={loginBackgroundPath} 
             style={styles.backgroundImage}
-            // opacity='.6'
+            opacity={4/10}
         >
             <Image source={loginLogoPath}/>
             <Header title='Artists Block'/>
