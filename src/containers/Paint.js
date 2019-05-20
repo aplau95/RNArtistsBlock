@@ -27,7 +27,9 @@ export class Paint extends Component {
       imageUrl: require("../../assets/loginLogo.png"),
       colors: [],
       population: [],
-      bodyTextColor: []
+      bodyTextColor: [],
+      imageHeight: 100,
+      imageWidth: 100
     };
   }
 
@@ -141,17 +143,22 @@ export class Paint extends Component {
     );
   };
   render() {
+    var imageWidth = this.state.imageWidth;
+    var imageHeight = this.state.imageHeight;
     const dimensions = Dimensions.get("window");
-    const dimHeight = Math.round((dimensions.width * 9) / 16);
-
-    const dimWidth = dimensions.width;
+    this.setState({ imageWidth: dimensions.width });
+    this.setState({
+      imageHeight: (dimensions.width * imageHeight) / imageWidth
+    });
+    var imageViewHeight = this.state.imageHeight;
+    var imageViewWidth = this.state.imageWidth;
 
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.buttonContainer}>
           <TouchableHighlight
             style={{
-              width: dimWidth / 2 - 2,
+              width: imageViewWidth / 2 - 2,
               height: 100,
               flex: 1,
               justifyContent: "center",
@@ -163,7 +170,7 @@ export class Paint extends Component {
           </TouchableHighlight>
           <TouchableHighlight
             style={{
-              width: dimWidth / 2 - 2,
+              width: imageViewWidth / 2 - 2,
               height: 100,
               flex: 1,
               justifyContent: "center",
@@ -175,12 +182,12 @@ export class Paint extends Component {
           </TouchableHighlight>
         </View>
         <Image
-          style={{ width: dimWidth, height: dimHeight }}
+          style={{ width: imageViewWidth, height: imageViewHeight }}
           source={this.state.imageUrl}
           key={this.state.imageUrl}
         />
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
-          {this.colorsList(dimWidth)}
+          {this.colorsList(dimensions.width)}
         </View>
         {/* </View> */}
       </SafeAreaView>
