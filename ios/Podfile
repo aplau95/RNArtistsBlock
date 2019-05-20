@@ -9,6 +9,7 @@ target 'artistsBlock' do
   pod "SDWebImage", "~>4.3.3"
   pod 'Firebase/Core', '~> 5.20.1'
   pod 'Firebase/Auth'
+  
 
 
   target 'artistsBlock-tvOSTests' do
