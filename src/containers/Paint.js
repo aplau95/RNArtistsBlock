@@ -25,6 +25,9 @@ export class Paint extends Component {
       data: null,
       jsonLength: 0,
       imageUrl: require("../../assets/loginLogo.png"),
+      onDefaultImage: true,
+      imageUrl2:
+        "https://assets.saatchiart.com/saatchi/399933/art/3610146/2680032-KVGNQHYJ-7.jpg",
       colors: [],
       population: [],
       bodyTextColor: [],
@@ -58,6 +61,13 @@ export class Paint extends Component {
     this.setState({ population: [] });
   };
 
+  isEmpty = obj => {
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) return false;
+    }
+    return true;
+  };
+
   getColor = () => {
     const person = {
       threshhold: false,
@@ -66,8 +76,15 @@ export class Paint extends Component {
     ImagePicker.launchImageLibrary({}, response => {
       var path = Platform.OS === "ios" ? response.origURL : response.path;
       const source = { uri: response.uri };
-      this.setState({ imageUrl: source });
-      this.getImageDim(source);
+
+      if (!this.isEmpty(source)) {
+        this.setState({ imageUrl: source });
+        // this.getImageDim(source);
+        // this.setState({ imageUrl2: source });
+      }
+
+      // this.setState({ onDefaultImage: false });
+
       this.clearArrays();
       getAllSwatches(person, path, (error, swatches) => {
         if (error) {
@@ -103,10 +120,12 @@ export class Paint extends Component {
   };
 
   getSquareFormat = width => {
-    if (this.state.colors.length > 15) {
+    if (this.state.colors.length > 16) {
       return width / 5;
-    } else if (this.state.colors.length > 12) {
+    } else if (this.state.colors.length > 9) {
       return width / 4;
+    } else {
+      return width / 3;
     }
   };
 
@@ -143,15 +162,14 @@ export class Paint extends Component {
     );
   };
   render() {
-    var imageWidth = this.state.imageWidth;
-    var imageHeight = this.state.imageHeight;
+    if (!this.state.onDefaultImage) {
+      this.getImageDim(this.state.imageUrl2);
+    }
+
     const dimensions = Dimensions.get("window");
-    this.setState({ imageWidth: dimensions.width });
-    this.setState({
-      imageHeight: (dimensions.width * imageHeight) / imageWidth
-    });
-    var imageViewHeight = this.state.imageHeight;
-    var imageViewWidth = this.state.imageWidth;
+
+    var imageViewHeight = (dimensions.height * 9) / 16;
+    var imageViewWidth = dimensions.width;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -159,7 +177,7 @@ export class Paint extends Component {
           <TouchableHighlight
             style={{
               width: imageViewWidth / 2 - 2,
-              height: 100,
+              height: 50,
               flex: 1,
               justifyContent: "center",
               alignItems: "center"
@@ -171,7 +189,7 @@ export class Paint extends Component {
           <TouchableHighlight
             style={{
               width: imageViewWidth / 2 - 2,
-              height: 100,
+              height: 50,
               flex: 1,
               justifyContent: "center",
               alignItems: "center"
@@ -182,7 +200,8 @@ export class Paint extends Component {
           </TouchableHighlight>
         </View>
         <Image
-          style={{ width: imageViewWidth, height: imageViewHeight }}
+          resizeMode={"center"}
+          style={{ width: imageViewWidth, height: 250 }}
           source={this.state.imageUrl}
           key={this.state.imageUrl}
         />
