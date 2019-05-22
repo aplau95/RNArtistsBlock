@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 // import firebase from 'react-native-firebase';
 
-import {createAppContainer} from 'react-navigation';
+import { createAppContainer } from "react-navigation";
 
-import {Login} from './src/containers/Login'
-import { SignedIn, createRootNavigator } from './src/navigation/AppNavigator';
+import { Login } from "./src/containers/Login";
+import { SignedIn, createRootNavigator } from "./src/navigation/AppNavigator";
 
 export default class App extends Component {
   state = {
@@ -25,7 +25,7 @@ export default class App extends Component {
   render() {
     const { checkedSignIn, signedIn } = this.state;
 
-    const Layout = createRootNavigator(signedIn)
-    return <Layout/>
+    const Layout = createRootNavigator(signedIn);
+    return <Layout />;
   }
 }
