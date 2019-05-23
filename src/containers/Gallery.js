@@ -9,6 +9,8 @@ import {
   SafeAreaView
 } from "react-native";
 
+import { connect } from "react-redux";
+
 export class Gallery extends Component {
   render() {
     return (
@@ -24,7 +26,11 @@ export class Gallery extends Component {
             sections={[
               { title: "Title1", data: ["item1", "item2"] },
               { title: "Title2", data: ["item3", "item4"] },
-              { title: "Title3", data: ["item5", "item6"] }
+              { title: "Title3", data: ["item5", "item6"] },
+              {
+                title: "Title4",
+                data: ["item5", "item6"]
+              }
             ]}
             keyExtractor={(item, index) => item + index}
           />
@@ -33,6 +39,8 @@ export class Gallery extends Component {
     );
   }
 }
+
+// export default connect()(Gallery);
 
 const styles = StyleSheet.create({
   container: {
@@ -57,4 +65,12 @@ const styles = StyleSheet.create({
     color: "#333333",
     marginBottom: 5
   }
+});
+
+const mapStateToProps = state => {
+  const { friends } = state;
+  return { friends };
+};
+const mapDispatchToProps = dispatch => ({
+  /* action creators are binded here */
 });

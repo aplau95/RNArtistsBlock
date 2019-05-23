@@ -3,8 +3,14 @@ import React, { Component } from "react";
 
 import { createAppContainer } from "react-navigation";
 
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducer from "./src/reducers/reducer.js";
+
 import { Login } from "./src/containers/Login";
 import { SignedIn, createRootNavigator } from "./src/navigation/AppNavigator";
+
+const store = createStore(reducer);
 
 export default class App extends Component {
   state = {
@@ -26,6 +32,10 @@ export default class App extends Component {
     const { checkedSignIn, signedIn } = this.state;
 
     const Layout = createRootNavigator(signedIn);
-    return <Layout />;
+    return (
+      <Provider store={store}>
+        <Layout />
+      </Provider>
+    );
   }
 }

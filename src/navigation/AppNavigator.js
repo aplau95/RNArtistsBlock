@@ -1,6 +1,6 @@
-import {createAppContainer} from 'react-navigation'
+import { createAppContainer } from "react-navigation";
 
-import React from 'react';
+import React from "react";
 import { Platform, StatusBar, Button } from "react-native";
 import {
   createStackNavigator,
@@ -8,14 +8,13 @@ import {
   createSwitchNavigator
 } from "react-navigation";
 
-
-import {Paint} from '../containers/Paint'
-import {Login} from '../containers/Login'
-import {SignUp} from '../containers/SignUp'
-import {Gallery} from '../containers/Gallery'
-import {Settings} from '../containers/settings/Settings'
-import {ReferencePhotos} from '../containers/settings/ReferencePhotos'
-import {PaintColors} from '../containers/settings/PaintColors'
+import Paint from "../containers/Paint";
+import { Login } from "../containers/Login";
+import { SignUp } from "../containers/SignUp";
+import { Gallery } from "../containers/Gallery";
+import Settings from "../containers/settings/Settings";
+import { ReferencePhotos } from "../containers/settings/ReferencePhotos";
+import { PaintColors } from "../containers/settings/PaintColors";
 
 const headerStyle = {
   marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -25,7 +24,7 @@ export const SignedOut = createStackNavigator({
   Login: {
     screen: Login,
     navigationOptions: {
-      header: null,
+      header: null
     }
   },
   SignUp: {
@@ -34,36 +33,33 @@ export const SignedOut = createStackNavigator({
       title: "Sign Up",
       headerStyle
     }
-  },
-  
-},
-);
+  }
+});
 
 export const SettingsNav = createStackNavigator({
-    Settings: {
-        screen: Settings,
-        navigationOptions: {
-            title: 'Settings',
-            headerRight: (
-                <Button
-                  onPress={() => alert('This is a button!')}
-                  title="Sign Out"
-                  color="#000000"
-                />
-            )
-          }
-    },
-    ReferencePhotos: {
-        screen: ReferencePhotos,
-        
-    },
-    PaintColors: {
-        screen: PaintColors,
-        navigationOptions: {
-            title: "Sign Up",
-            headerStyle
-          }
+  Settings: {
+    screen: Settings,
+    navigationOptions: {
+      title: "Settings",
+      headerRight: (
+        <Button
+          onPress={() => alert("This is a button!")}
+          title="Sign Out"
+          color="#000000"
+        />
+      )
     }
+  },
+  ReferencePhotos: {
+    screen: ReferencePhotos
+  },
+  PaintColors: {
+    screen: PaintColors,
+    navigationOptions: {
+      title: "Sign Up",
+      headerStyle
+    }
+  }
 });
 
 export const SignedIn = createBottomTabNavigator(
@@ -81,11 +77,11 @@ export const SignedIn = createBottomTabNavigator(
       }
     },
     Settings: {
-        screen: SettingsNav,
-        navigationOptions: {
-          tabBarLabel: "Settings"
-        }
+      screen: SettingsNav,
+      navigationOptions: {
+        tabBarLabel: "Settings"
       }
+    }
   },
   {
     tabBarOptions: {
@@ -97,7 +93,8 @@ export const SignedIn = createBottomTabNavigator(
 );
 
 export const createRootNavigator = (signedIn = false) => {
-    return createAppContainer(createSwitchNavigator(
+  return createAppContainer(
+    createSwitchNavigator(
       {
         SignedIn: {
           screen: SignedIn
@@ -109,5 +106,6 @@ export const createRootNavigator = (signedIn = false) => {
       {
         initialRouteName: signedIn ? "SignedIn" : "SignedOut"
       }
-    ));
-  };
+    )
+  );
+};

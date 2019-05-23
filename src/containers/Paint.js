@@ -15,8 +15,10 @@ import {
 
 import { getAllSwatches } from "react-native-palette";
 import ImagePicker from "react-native-image-picker";
+import { connect } from "react-redux";
+import { capitalize } from "../utils/paintFunctions";
 
-export class Paint extends Component {
+class Paint extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +73,7 @@ export class Paint extends Component {
   getColor = () => {
     const person = {
       threshhold: false,
-      quality: "high"
+      quality: this.props.quality.current
     };
     ImagePicker.launchImageLibrary({}, response => {
       var path = Platform.OS === "ios" ? response.origURL : response.path;
@@ -79,11 +81,7 @@ export class Paint extends Component {
 
       if (!this.isEmpty(source)) {
         this.setState({ imageUrl: source });
-        // this.getImageDim(source);
-        // this.setState({ imageUrl2: source });
       }
-
-      // this.setState({ onDefaultImage: false });
 
       this.clearArrays();
       getAllSwatches(person, path, (error, swatches) => {
@@ -129,7 +127,7 @@ export class Paint extends Component {
     }
   };
 
-  colorsList = width => {
+  colorsList = (width, height) => {
     return this.state.colors.map((data, index) => {
       return (
         <View
@@ -138,7 +136,7 @@ export class Paint extends Component {
             justifyContent: "center",
             alignItems: "center",
             width: this.getSquareFormat(width),
-            height: this.getSquareFormat(width),
+            height: this.getSquareFormat(height),
             backgroundColor: data
           }}
         >
@@ -167,8 +165,11 @@ export class Paint extends Component {
     }
 
     const dimensions = Dimensions.get("window");
-
-    var imageViewHeight = (dimensions.height * 9) / 16;
+    const extractQuality =
+      "Color Extraction Quality: " +
+      `${capitalize(this.props.quality.current)}`;
+    var windowHeight = dimensions.height - 80;
+    var imageViewHeight = (windowHeight * 6) / 16;
     var imageViewWidth = dimensions.width;
 
     return (
@@ -177,7 +178,7 @@ export class Paint extends Component {
           <TouchableHighlight
             style={{
               width: imageViewWidth / 2 - 2,
-              height: 50,
+              height: (windowHeight * 0.5) / 16,
               flex: 1,
               justifyContent: "center",
               alignItems: "center"
@@ -189,7 +190,7 @@ export class Paint extends Component {
           <TouchableHighlight
             style={{
               width: imageViewWidth / 2 - 2,
-              height: 50,
+              height: (windowHeight * 0.5) / 16,
               flex: 1,
               justifyContent: "center",
               alignItems: "center"
@@ -201,12 +202,13 @@ export class Paint extends Component {
         </View>
         <Image
           resizeMode={"center"}
-          style={{ width: imageViewWidth, height: 250 }}
+          style={{ width: imageViewWidth, height: imageViewHeight }}
           source={this.state.imageUrl}
           key={this.state.imageUrl}
         />
+        <Text style={styles.qualityText}>{extractQuality}</Text>
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
-          {this.colorsList(dimensions.width)}
+          {this.colorsList(dimensions.width, (windowHeight * 8) / 16)}
         </View>
         {/* </View> */}
       </SafeAreaView>
@@ -214,15 +216,28 @@ export class Paint extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  const { quality } = state;
+  return { quality };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Paint);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "flex-start",
+    // justifyContent: "flex-start",
     alignItems: "stretch"
   },
   buttonContainer: {
     flexDirection: "row"
+  },
+  qualityText: {
+    textAlign: "center"
   },
   button: {
     alignItems: "center",

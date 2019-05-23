@@ -1,17 +1,22 @@
-// import { combineReducers } from "redux";
+import { combineReducers } from "redux";
 
-// const INITIAL_STATE = {
-//   current: [],
-//   possible: ["Allie", "Gator", "Lizzie", "Reptar"]
-// };
+const INITIAL_STATE = {
+  current: "high",
+  windowWidth: 0,
+  windowHeight: 0
+};
 
-// const reducer = (state = INITIAL_STATE, action) => {
-//   switch (action.type) {
-//     default:
-//       return state;
-//   }
-// };
+const reducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case "ADD_FRIEND":
+      const current = action.payload;
+      const newState = { current };
+      return newState;
+    default:
+      return state;
+  }
+};
 
-// export default combineReducers({
-//   friends: reducer
-// });
+export default combineReducers({
+  quality: reducer
+});

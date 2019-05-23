@@ -1,9 +1,9 @@
-// import React, { Component } from "react";
-// import { createStore, combineReducers } from "react-redux";
-// import reducer from "../reducers/reducer.js";
+import React, { Component } from "react";
+import { createStore, combineReducers } from "react-redux";
+import reducer from "../reducers/reducer.js";
 
-// export const store = createStore(
-//   combineReducers({
-//     state: reducer
-//   })
-// );
+export const store = createStore(
+  combineReducers({
+    state: reducer
+  })
+);
