@@ -4,6 +4,9 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
+import io.invertase.firebase.storage.RNFirebaseStoragePackage;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // import me.jerson.mobile.palette.RNPalettePackage;
 import io.palette.RNPalettePackage;
 import com.imagepicker.ImagePickerPackage;
@@ -28,8 +31,9 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(new MainReactPackage(), new RNFirebasePackage(), new RNPalettePackage(),
-          new ImagePickerPackage(), new VectorIconsPackage(), new RNScreensPackage(), new RNGestureHandlerPackage());
+      return Arrays.<ReactPackage>asList(new MainReactPackage(), new RNFirebasePackage(),
+          new RNFirebaseStoragePackage(), new RNFirebaseFirestorePackage(), new RNPalettePackage(),
+          new ImagePickerPackage(), new AsyncStoragePackage(), new VectorIconsPackage(), new RNScreensPackage(), new RNGestureHandlerPackage());
     }
 
     @Override

@@ -9,7 +9,7 @@ import {
 } from "react-navigation";
 
 import Paint from "../containers/Paint";
-import { Login } from "../containers/Login";
+import Login from "../containers/Login";
 import { SignUp } from "../containers/SignUp";
 import { Gallery } from "../containers/Gallery";
 import Settings from "../containers/settings/Settings";

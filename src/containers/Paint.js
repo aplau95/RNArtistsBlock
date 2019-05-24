@@ -10,9 +10,14 @@ import {
   Alert,
   Dimensions,
   SafeAreaView,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage
 } from "react-native";
 
+// import { AsyncStorage } from "@react-native-community/async-storage";
+import firebase from "react-native-firebase";
+const { app } = firebase.storage();
+import uuid from "uuid/v4"; // Import UUID to generate UUID
 import { getAllSwatches } from "react-native-palette";
 import ImagePicker from "react-native-image-picker";
 import { connect } from "react-redux";
@@ -26,15 +31,17 @@ class Paint extends Component {
       canUpdate: false,
       data: null,
       jsonLength: 0,
-      imageUrl: require("../../assets/loginLogo.png"),
+      imageUri: require("../../assets/loginLogo.png"),
+      imageSource: require("../../assets/loginLogo.png"),
       onDefaultImage: true,
-      imageUrl2:
-        "https://assets.saatchiart.com/saatchi/399933/art/3610146/2680032-KVGNQHYJ-7.jpg",
       colors: [],
       population: [],
       bodyTextColor: [],
       imageHeight: 100,
-      imageWidth: 100
+      imageWidth: 100,
+      uploading: false,
+      progress: 0,
+      images: []
     };
   }
 
@@ -70,6 +77,73 @@ class Paint extends Component {
     return true;
   };
 
+  uploadImage = () => {
+    const ext = String(this.state.imageUri)
+      .split(".")
+      .pop(); // Extract image extension
+    // this.alertMe(ext);
+    const filename = `${uuid()}.${ext}`; // Generate unique name
+    // this.alertMe(filename);
+    this.setState({ uploading: true });
+    firebase
+      .storage()
+      .ref(`tutorials/images/${this.props.quality.userId}/${filename}`)
+      .putFile(this.state.imageUri)
+      .on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        snapshot => {
+          let state = {};
+          state = {
+            ...state,
+            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Calculate progress percentage
+          };
+          if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+            const allImages = this.state.images;
+            allImages.push(snapshot.downloadURL);
+            state = {
+              ...state,
+              uploading: false,
+              imgSource: "",
+              imageUri: "",
+              progress: 0,
+              images: allImages
+            };
+            this._storeData(allImages);
+          }
+          this.setState(state);
+        },
+        error => {
+          unsubscribe();
+          alert("Sorry, Try again.");
+        }
+      );
+  };
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("images");
+      if (value !== null) {
+        // We have data!!
+        this.alertMe(value);
+      }
+      this.alertMe("nothing!!!");
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+
+  _storeData = async allImages => {
+    try {
+      await AsyncStorage.setItem(
+        "images/" + this.props.quality.userId,
+        JSON.stringify(allImages)
+      );
+      this._retrieveData();
+    } catch (error) {
+      // Error saving data
+    }
+  };
+
   getColor = () => {
     const person = {
       threshhold: false,
@@ -79,9 +153,9 @@ class Paint extends Component {
       var path = Platform.OS === "ios" ? response.origURL : response.path;
       const source = { uri: response.uri };
 
-      if (!this.isEmpty(source)) {
-        this.setState({ imageUrl: source });
-      }
+      // if (!this.isEmpty(source)) {
+      this.setState({ imageSource: source, imageUri: response.uri });
+      // }
 
       this.clearArrays();
       getAllSwatches(person, path, (error, swatches) => {
@@ -183,7 +257,7 @@ class Paint extends Component {
               justifyContent: "center",
               alignItems: "center"
             }}
-            onPress={this.getColor}
+            onPress={() => this.getColor()}
           >
             <Text>Get Photo</Text>
           </TouchableHighlight>
@@ -195,16 +269,28 @@ class Paint extends Component {
               justifyContent: "center",
               alignItems: "center"
             }}
-            onPress={this.getColor}
+            onPress={() => this.uploadImage()}
           >
             <Text>Get Camera</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={{
+              width: imageViewWidth / 2 - 2,
+              height: (windowHeight * 0.5) / 16,
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+            onPress={() => this._retrieveData()}
+          >
+            <Text>Get Data</Text>
           </TouchableHighlight>
         </View>
         <Image
           resizeMode={"center"}
           style={{ width: imageViewWidth, height: imageViewHeight }}
-          source={this.state.imageUrl}
-          key={this.state.imageUrl}
+          source={this.state.imageSource}
+          key={this.state.imageUri}
         />
         <Text style={styles.qualityText}>{extractQuality}</Text>
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>

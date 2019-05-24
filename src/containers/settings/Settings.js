@@ -69,6 +69,7 @@ class Settings extends React.PureComponent {
         />
         <Button title="high" onPress={() => this.props.changeQuality("high")} />
         <Text>{this.props.quality.current}</Text>
+        <Text>{this.props.quality.userId}</Text>
       </View>
     );
   }
