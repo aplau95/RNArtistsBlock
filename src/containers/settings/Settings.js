@@ -14,62 +14,54 @@ import { connect } from "react-redux";
 import { ReferencePhotos } from "./ReferencePhotos";
 import { PaintColors } from "./PaintColors";
 import { RoundTextInput } from "../../components/RoundTextInput";
+import Slider from "@react-native-community/slider";
 
 import { bindActionCreators } from "redux";
 import { changeQuality } from "../../actions/FriendAction";
 
-// class MyListItem extends React.PureComponent {
-//   _onPress = () => {
-//     this.props.onPressItem(this.props.id);
-//   };
-
-//   render() {
-//     const textColor = this.props.selected ? "red" : "black";
-//     return (
-//       <TouchableOpacity onPress={this._onPress()}>
-//         <View>
-//           <Text style={{ color: textColor }}>{this.props.title}</Text>
-//         </View>
-//       </TouchableOpacity>
-//     );
-//   }
-// }
-
 class Settings extends React.PureComponent {
-  state = { selected: (new Map(): Map<string, boolean>) };
-
-  _keyExtractor = (item, index) => item.id;
-
-  _onPressItem = (id: string) => {
-    // updater functions are preferred for transactional updates
-    this.setState(state => {
-      // copy the map rather than modifying state.
-      const selected = new Map(state.selected);
-      selected.set(id, !selected.get(id)); // toggle
-      return { selected };
-    });
+  getValue = () => {
+    switch (this.props.quality.current) {
+      case "high":
+        return 2;
+      case "medium":
+        return 1;
+      case "low":
+        return 0;
+    }
   };
 
-  _renderItem = ({ item }) => (
-    <MyListItem
-      id={item.id}
-      onPressItem={this._onPressItem}
-      selected={!!this.state.selected.get(item.id)}
-      title={item.title}
-    />
-  );
+  change(value) {
+    var quality = "low";
+    switch (value) {
+      case 0:
+        quality = "low";
+        break;
+      case 1:
+        quality = "medium";
+        break;
+      case 2:
+        quality = "high";
+        break;
+    }
+    this.props.changeQuality(quality);
+  }
 
   render() {
     return (
       <View style={styles.container}>
-        <Button title="low" onPress={() => this.props.changeQuality("low")} />
-        <Button
-          title="medium"
-          onPress={() => this.props.changeQuality("medium")}
-        />
-        <Button title="high" onPress={() => this.props.changeQuality("high")} />
         <Text>{this.props.quality.current}</Text>
         <Text>{this.props.quality.userId}</Text>
+        <Slider
+          step={1}
+          value={this.getValue()}
+          style={{ width: 200, height: 40 }}
+          minimumValue={0}
+          maximumValue={2}
+          onValueChange={this.change.bind(this)}
+          minimumTrackTintColor="#FFFFFF"
+          maximumTrackTintColor="#000000"
+        />
       </View>
     );
   }

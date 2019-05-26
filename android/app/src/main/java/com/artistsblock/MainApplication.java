@@ -3,11 +3,12 @@ package com.artistsblock;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.slider.ReactSliderPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
-// import me.jerson.mobile.palette.RNPalettePackage;
+import com.reactnativecommunity.slider.ReactSliderPackage;
 import io.palette.RNPalettePackage;
 import com.imagepicker.ImagePickerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -31,9 +32,10 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(new MainReactPackage(), new RNFirebasePackage(),
-          new RNFirebaseStoragePackage(), new RNFirebaseFirestorePackage(), new RNPalettePackage(),
-          new ImagePickerPackage(), new AsyncStoragePackage(), new VectorIconsPackage(), new RNScreensPackage(), new RNGestureHandlerPackage());
+      return Arrays.<ReactPackage>asList(new MainReactPackage(), new ReactSliderPackage(), new ReactSliderPackage(),
+          new RNFirebasePackage(), new RNFirebaseStoragePackage(), new RNFirebaseFirestorePackage(),
+          new RNPalettePackage(), new ImagePickerPackage(), new AsyncStoragePackage(), new VectorIconsPackage(),
+          new RNScreensPackage(), new RNGestureHandlerPackage());
     }
 
     @Override

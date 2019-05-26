@@ -6,17 +6,73 @@ import {
   Text,
   View,
   SectionList,
-  SafeAreaView
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
+  Image
 } from "react-native";
 
 import { connect } from "react-redux";
 
+class MyListItem extends React.PureComponent {
+  _onPress = () => {
+    this.props.onPressItem(this.props.id);
+  };
+
+  render() {
+    const textColor = this.props.selected ? "red" : "black";
+    return (
+      <TouchableOpacity onPress={this._onPress}>
+        <View>
+          <Image
+            resizeMode={"center"}
+            style={{ width: 200, height: 100 }}
+            source={{
+              uri: this.props.title
+            }}
+            key={this.props.title}
+          />
+          {/* <Text style={{ color: textColor }}>{this.props.title}</Text> */}
+        </View>
+      </TouchableOpacity>
+    );
+  }
+}
+
 export class Gallery extends Component {
+  state = { selected: (new Map(): Map<string, boolean>) };
+
+  _keyExtractor = (item, index) => item.id;
+
+  _onPressItem = (id: string) => {
+    // updater functions are preferred for transactional updates
+    this.setState(state => {
+      // copy the map rather than modifying state.
+      const selected = new Map(state.selected);
+      selected.set(id, !selected.get(id)); // toggle
+      return { selected };
+    });
+  };
+
+  _renderItem = ({ item }) => (
+    <MyListItem
+      id={item.piece}
+      onPressItem={this._onPressItem}
+      selected={!!this.state.selected.get(item.id)}
+      title={item.piece}
+    />
+  );
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <View>
-          <SectionList
+          <FlatList
+            data={this.props.quality.userImages}
+            renderItem={this._renderItem}
+            keyExtractor={this._keyExtractor}
+          />
+          {/* <SectionList
             renderItem={({ item, index, section }) => (
               <Text key={index}>{item}</Text>
             )}
@@ -33,14 +89,22 @@ export class Gallery extends Component {
               }
             ]}
             keyExtractor={(item, index) => item + index}
-          />
+          /> */}
         </View>
       </SafeAreaView>
     );
   }
 }
 
-// export default connect()(Gallery);
+const mapStateToProps = state => {
+  const { quality } = state;
+  return { quality };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Gallery);
 
 const styles = StyleSheet.create({
   container: {
@@ -48,29 +112,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF"
-  },
-  backgroundImage: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
   }
-});
-
-const mapStateToProps = state => {
-  const { friends } = state;
-  return { friends };
-};
-const mapDispatchToProps = dispatch => ({
-  /* action creators are binded here */
 });

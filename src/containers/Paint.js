@@ -22,10 +22,12 @@ import { getAllSwatches } from "react-native-palette";
 import ImagePicker from "react-native-image-picker";
 import { connect } from "react-redux";
 import { capitalize } from "../utils/paintFunctions";
+import { alertMe } from "../utils/utils";
 
 class Paint extends Component {
   constructor(props) {
     super(props);
+    this.ref = firebase.firestore().collection(this.props.quality.userId);
     this.state = {
       isLoading: true,
       canUpdate: false,
@@ -45,36 +47,18 @@ class Paint extends Component {
     };
   }
 
-  alertMe = a => {
-    Alert.alert(
-      a,
-      "My Alert Msg",
-      [
-        {
-          text: "Ask me later",
-          onPress: () => console.log("Ask me later pressed")
-        },
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
-  };
+  componentDidMount() {}
 
   clearArrays = () => {
     this.setState({ colors: [] });
     this.setState({ population: [] });
   };
 
-  isEmpty = obj => {
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) return false;
-    }
-    return true;
+  _addImageRef = imageRef => {
+    this.ref.add({
+      piece: imageRef
+      // referenceImage:
+    });
   };
 
   uploadImage = () => {
@@ -95,20 +79,15 @@ class Paint extends Component {
           let state = {};
           state = {
             ...state,
-            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Calculate progress percentage
+            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100, // Calculate progress percentage
+            images: []
           };
           if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
             const allImages = this.state.images;
             allImages.push(snapshot.downloadURL);
-            state = {
-              ...state,
-              uploading: false,
-              imgSource: "",
-              imageUri: "",
-              progress: 0,
-              images: allImages
-            };
-            this._storeData(allImages);
+            allImages.map(function(item, i) {
+              this._addImageRef(item);
+            }, this);
           }
           this.setState(state);
         },
@@ -119,46 +98,19 @@ class Paint extends Component {
       );
   };
 
-  _retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("images");
-      if (value !== null) {
-        // We have data!!
-        this.alertMe(value);
-      }
-      this.alertMe("nothing!!!");
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
-
-  _storeData = async allImages => {
-    try {
-      await AsyncStorage.setItem(
-        "images/" + this.props.quality.userId,
-        JSON.stringify(allImages)
-      );
-      this._retrieveData();
-    } catch (error) {
-      // Error saving data
-    }
-  };
-
+  getSwatches = imageUrl => {};
   getColor = () => {
-    const person = {
+    const quality = {
       threshhold: false,
       quality: this.props.quality.current
     };
     ImagePicker.launchImageLibrary({}, response => {
       var path = Platform.OS === "ios" ? response.origURL : response.path;
       const source = { uri: response.uri };
-
-      // if (!this.isEmpty(source)) {
       this.setState({ imageSource: source, imageUri: response.uri });
-      // }
 
       this.clearArrays();
-      getAllSwatches(person, path, (error, swatches) => {
+      getAllSwatches(quality, path, (error, swatches) => {
         if (error) {
           console.log(error);
         } else {
@@ -183,8 +135,8 @@ class Paint extends Component {
   };
 
   getArrays = () => {
-    this.alertMe(JSON.stringify(this.state.colors));
-    this.alertMe(JSON.stringify(this.state.population));
+    alertMe(JSON.stringify(this.state.colors));
+    alertMe(JSON.stringify(this.state.population));
   };
 
   toPercent = ratio => {
@@ -226,7 +178,7 @@ class Paint extends Component {
     Image.getSize(
       url,
       (width, height) => {
-        this.alertMe(`The image dimensions are ${width}x${height}`);
+        alertMe(`The image dimensions are ${width}x${height}`);
       },
       error => {
         console.error(`Couldn't get the image size: ${error.message}`);
@@ -296,7 +248,6 @@ class Paint extends Component {
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
           {this.colorsList(dimensions.width, (windowHeight * 8) / 16)}
         </View>
-        {/* </View> */}
       </SafeAreaView>
     );
   }

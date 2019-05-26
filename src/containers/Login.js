@@ -12,13 +12,37 @@ const loginBackgroundPath = require("../../assets/loginBackground.jpg");
 const loginLogoPath = require("../../assets/loginLogo.png");
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setUserId, changeQuality } from "../actions/FriendAction";
+import {
+  setUserId,
+  changeQuality,
+  setUserImages
+} from "../actions/FriendAction";
+
+import { alertMe } from "../utils/utils";
 
 class Login extends Component {
+  constructor() {
+    super();
+  }
   state = {
     email: "love4snuggles@gmail.com",
     password: "Pokemaster",
     errorMessage: null
+  };
+
+  getAllrefs = ref => {
+    for (var key in ref) {
+      this.props.setUserImages();
+    }
+  };
+
+  getUserData = async userId => {
+    const ref = firebase.firestore().collection(userId);
+    const collection = await ref.get();
+    collection.docs.map(doc => {
+      const pieceUrl = doc.data();
+      this.props.setUserImages(pieceUrl);
+    });
   };
 
   handleSignIn = () => {
@@ -27,9 +51,12 @@ class Login extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(data => {
         this.props.setUserId(data.user.uid);
+        this.getUserData(data.user.uid);
       })
       .then(() => this.props.navigation.navigate("SignedIn"))
       .catch(error => this.setState({ errorMessage: error.message }));
+
+    // .then(() => this.props.navigation.navigate("SignedIn"));
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -80,15 +107,16 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  const { userID } = state;
-  return { userID };
+  const { userId } = state;
+  return { userId };
 };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       setUserId,
-      changeQuality
+      changeQuality,
+      setUserImages
     },
     dispatch
   );

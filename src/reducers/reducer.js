@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   current: "high",
   windowWidth: 0,
   windowHeight: 0,
-  userId: ""
+  userId: "",
+  userImages: []
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -17,6 +18,13 @@ const reducer = (state = INITIAL_STATE, action) => {
       const userId = action.payload;
       const newState2 = { ...state, userId };
       return newState2;
+    case "SET_USER_IMAGES":
+      const userImage = action.payload;
+      const newState3 = {
+        ...state,
+        userImages: [...state.userImages, userImage]
+      };
+      return newState3;
     default:
       return state;
   }

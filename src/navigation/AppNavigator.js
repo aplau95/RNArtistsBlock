@@ -11,7 +11,7 @@ import {
 import Paint from "../containers/Paint";
 import Login from "../containers/Login";
 import { SignUp } from "../containers/SignUp";
-import { Gallery } from "../containers/Gallery";
+import Gallery from "../containers/Gallery";
 import Settings from "../containers/settings/Settings";
 import { ReferencePhotos } from "../containers/settings/ReferencePhotos";
 import { PaintColors } from "../containers/settings/PaintColors";
