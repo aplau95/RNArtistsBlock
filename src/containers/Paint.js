@@ -10,83 +10,107 @@ import {
   Alert,
   Dimensions,
   SafeAreaView,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage
 } from "react-native";
 
+// import { AsyncStorage } from "@react-native-community/async-storage";
+import firebase from "react-native-firebase";
+const { app } = firebase.storage();
+import uuid from "uuid/v4"; // Import UUID to generate UUID
 import { getAllSwatches } from "react-native-palette";
 import ImagePicker from "react-native-image-picker";
+import { connect } from "react-redux";
+import { capitalize } from "../utils/paintFunctions";
+import { alertMe } from "../utils/utils";
 
-export class Paint extends Component {
+class Paint extends Component {
   constructor(props) {
     super(props);
+    this.ref = firebase.firestore().collection(this.props.quality.userId);
     this.state = {
       isLoading: true,
       canUpdate: false,
       data: null,
       jsonLength: 0,
-      imageUrl: require("../../assets/loginLogo.png"),
+      imageUri: require("../../assets/loginLogo.png"),
+      imageSource: require("../../assets/loginLogo.png"),
       onDefaultImage: true,
-      imageUrl2:
-        "https://assets.saatchiart.com/saatchi/399933/art/3610146/2680032-KVGNQHYJ-7.jpg",
       colors: [],
       population: [],
       bodyTextColor: [],
       imageHeight: 100,
-      imageWidth: 100
+      imageWidth: 100,
+      uploading: false,
+      progress: 0,
+      images: []
     };
   }
 
-  alertMe = a => {
-    Alert.alert(
-      a,
-      "My Alert Msg",
-      [
-        {
-          text: "Ask me later",
-          onPress: () => console.log("Ask me later pressed")
-        },
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
-  };
+  componentDidMount() {}
 
   clearArrays = () => {
     this.setState({ colors: [] });
     this.setState({ population: [] });
   };
 
-  isEmpty = obj => {
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) return false;
-    }
-    return true;
+  _addImageRef = imageRef => {
+    this.ref.add({
+      piece: imageRef
+      // referenceImage:
+    });
   };
 
+  uploadImage = () => {
+    const ext = String(this.state.imageUri)
+      .split(".")
+      .pop(); // Extract image extension
+    // this.alertMe(ext);
+    const filename = `${uuid()}.${ext}`; // Generate unique name
+    // this.alertMe(filename);
+    this.setState({ uploading: true });
+    firebase
+      .storage()
+      .ref(`tutorials/images/${this.props.quality.userId}/${filename}`)
+      .putFile(this.state.imageUri)
+      .on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        snapshot => {
+          let state = {};
+          state = {
+            ...state,
+            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100, // Calculate progress percentage
+            images: []
+          };
+          if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+            const allImages = this.state.images;
+            allImages.push(snapshot.downloadURL);
+            allImages.map(function(item, i) {
+              this._addImageRef(item);
+            }, this);
+          }
+          this.setState(state);
+        },
+        error => {
+          unsubscribe();
+          alert("Sorry, Try again.");
+        }
+      );
+  };
+
+  getSwatches = imageUrl => {};
   getColor = () => {
-    const person = {
+    const quality = {
       threshhold: false,
-      quality: "high"
+      quality: this.props.quality.current
     };
     ImagePicker.launchImageLibrary({}, response => {
       var path = Platform.OS === "ios" ? response.origURL : response.path;
       const source = { uri: response.uri };
-
-      if (!this.isEmpty(source)) {
-        this.setState({ imageUrl: source });
-        // this.getImageDim(source);
-        // this.setState({ imageUrl2: source });
-      }
-
-      // this.setState({ onDefaultImage: false });
+      this.setState({ imageSource: source, imageUri: response.uri });
 
       this.clearArrays();
-      getAllSwatches(person, path, (error, swatches) => {
+      getAllSwatches(quality, path, (error, swatches) => {
         if (error) {
           console.log(error);
         } else {
@@ -111,12 +135,16 @@ export class Paint extends Component {
   };
 
   getArrays = () => {
-    this.alertMe(JSON.stringify(this.state.colors));
-    this.alertMe(JSON.stringify(this.state.population));
+    alertMe(JSON.stringify(this.state.colors));
+    alertMe(JSON.stringify(this.state.population));
   };
 
   toPercent = ratio => {
-    return (Number(ratio) * 100).toFixed(2) + "%";
+    var retRatio;
+    Platform.OS === "ios"
+      ? (retRatio = (Number(ratio) * 100).toFixed(2) + "%")
+      : (retRatio = ratio);
+    return retRatio;
   };
 
   getSquareFormat = width => {
@@ -129,7 +157,7 @@ export class Paint extends Component {
     }
   };
 
-  colorsList = width => {
+  colorsList = (width, height) => {
     return this.state.colors.map((data, index) => {
       return (
         <View
@@ -138,7 +166,7 @@ export class Paint extends Component {
             justifyContent: "center",
             alignItems: "center",
             width: this.getSquareFormat(width),
-            height: this.getSquareFormat(width),
+            height: this.getSquareFormat(height),
             backgroundColor: data
           }}
         >
@@ -154,7 +182,7 @@ export class Paint extends Component {
     Image.getSize(
       url,
       (width, height) => {
-        this.alertMe(`The image dimensions are ${width}x${height}`);
+        alertMe(`The image dimensions are ${width}x${height}`);
       },
       error => {
         console.error(`Couldn't get the image size: ${error.message}`);
@@ -167,8 +195,11 @@ export class Paint extends Component {
     }
 
     const dimensions = Dimensions.get("window");
-
-    var imageViewHeight = (dimensions.height * 9) / 16;
+    const extractQuality =
+      "Color Extraction Quality: " +
+      `${capitalize(this.props.quality.current)}`;
+    var windowHeight = dimensions.height - 80;
+    var imageViewHeight = (windowHeight * 6) / 16;
     var imageViewWidth = dimensions.width;
 
     return (
@@ -177,52 +208,77 @@ export class Paint extends Component {
           <TouchableHighlight
             style={{
               width: imageViewWidth / 2 - 2,
-              height: 50,
+              height: (windowHeight * 0.5) / 16,
               flex: 1,
               justifyContent: "center",
               alignItems: "center"
             }}
-            onPress={this.getColor}
+            onPress={() => this.getColor()}
           >
             <Text>Get Photo</Text>
           </TouchableHighlight>
           <TouchableHighlight
             style={{
               width: imageViewWidth / 2 - 2,
-              height: 50,
+              height: (windowHeight * 0.5) / 16,
               flex: 1,
               justifyContent: "center",
               alignItems: "center"
             }}
-            onPress={this.getColor}
+            onPress={() => this.uploadImage()}
           >
             <Text>Get Camera</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={{
+              width: imageViewWidth / 2 - 2,
+              height: (windowHeight * 0.5) / 16,
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+            onPress={() => this._retrieveData()}
+          >
+            <Text>Get Data</Text>
           </TouchableHighlight>
         </View>
         <Image
           resizeMode={"center"}
-          style={{ width: imageViewWidth, height: 250 }}
-          source={this.state.imageUrl}
-          key={this.state.imageUrl}
+          style={{ width: imageViewWidth, height: imageViewHeight }}
+          source={this.state.imageSource}
+          key={this.state.imageUri}
         />
+        <Text style={styles.qualityText}>{extractQuality}</Text>
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
-          {this.colorsList(dimensions.width)}
+          {this.colorsList(dimensions.width, (windowHeight * 8) / 16)}
         </View>
-        {/* </View> */}
       </SafeAreaView>
     );
   }
 }
 
+const mapStateToProps = state => {
+  const { quality } = state;
+  return { quality };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Paint);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "flex-start",
+    // justifyContent: "flex-start",
     alignItems: "stretch"
   },
   buttonContainer: {
     flexDirection: "row"
+  },
+  qualityText: {
+    textAlign: "center"
   },
   button: {
     alignItems: "center",
