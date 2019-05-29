@@ -32,10 +32,24 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
+<<<<<<< HEAD
       return Arrays.<ReactPackage>asList(new MainReactPackage(), new ReactSliderPackage(), new ReactSliderPackage(),
           new RNFirebasePackage(), new RNFirebaseStoragePackage(), new RNFirebaseFirestorePackage(),
           new RNPalettePackage(), new ImagePickerPackage(), new AsyncStoragePackage(), new VectorIconsPackage(),
           new RNScreensPackage(), new RNGestureHandlerPackage());
+=======
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+            new ReactSliderPackage(),
+            new RNFirebasePackage(),
+            new RNPalettePackage(),
+            new RNPalettePackage(),
+            new ImagePickerPackage(),
+            new VectorIconsPackage(),
+            new RNScreensPackage(),
+            new RNGestureHandlerPackage()
+      );
+>>>>>>> image
     }
 
     @Override

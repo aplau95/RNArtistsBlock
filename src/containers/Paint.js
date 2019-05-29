@@ -140,7 +140,11 @@ class Paint extends Component {
   };
 
   toPercent = ratio => {
-    return (Number(ratio) * 100).toFixed(2) + "%";
+    var retRatio;
+    Platform.OS === "ios"
+      ? (retRatio = (Number(ratio) * 100).toFixed(2) + "%")
+      : (retRatio = ratio);
+    return retRatio;
   };
 
   getSquareFormat = width => {

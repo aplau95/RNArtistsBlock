@@ -57,7 +57,11 @@
 		9332365B1C587E5A57F52545 /* libPods-artistsBlock-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7108B23C81BAD5AFA655BF /* libPods-artistsBlock-tvOS.a */; };
 		9F678EF62280E71100C4156F /* libRNPalette.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F678EF52280E6F900C4156F /* libRNPalette.a */; };
 		9F678F39228108E900C4156F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F678F38228108E800C4156F /* GoogleService-Info.plist */; };
+<<<<<<< HEAD
 		9F9344C72298CA8800EDE5CE /* libRNCSlider.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9344C62298CA7B00EDE5CE /* libRNCSlider.a */; };
+=======
+		9F7895C1229F215100AB297A /* libRNCSlider.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7895B8229F211200AB297A /* libRNCSlider.a */; };
+>>>>>>> image
 		AAAFF5C185F0058C28513472 /* libPods-artistsBlock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD753CF7205383E6FC5C75 /* libPods-artistsBlock.a */; };
 		ABAB6335AD6CA04694F98022 /* libPods-artistsBlockTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B58495CCE5BD8049CDF822 /* libPods-artistsBlockTests.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -394,9 +398,15 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNFirebase;
 		};
+<<<<<<< HEAD
 		9F9344C52298CA7B00EDE5CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F9344C12298CA7B00EDE5CE /* RNCSlider.xcodeproj */;
+=======
+		9F7895B7229F211200AB297A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F78958E229F211200AB297A /* RNCSlider.xcodeproj */;
+>>>>>>> image
 			proxyType = 2;
 			remoteGlobalIDString = 28C79A09220DC4CC0061DE82;
 			remoteInfo = RNCSlider;
@@ -468,7 +478,11 @@
 		9F5B7D0406D148739072543C /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
 		9F678EF02280E6EF00C4156F /* RNPalette.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNPalette.xcodeproj; path = "../node_modules/react-native-palette/ios/RNPalette.xcodeproj"; sourceTree = "<group>"; };
 		9F678F38228108E800C4156F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		9F9344C12298CA7B00EDE5CE /* RNCSlider.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCSlider.xcodeproj; path = "../node_modules/@react-native-community/slider/ios/RNCSlider.xcodeproj"; sourceTree = "<group>"; };
+=======
+		9F78958E229F211200AB297A /* RNCSlider.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCSlider.xcodeproj; path = "../node_modules/@react-native-community/slider/ios/RNCSlider.xcodeproj"; sourceTree = "<group>"; };
+>>>>>>> image
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B5AA12AE106D98817E01412C /* Pods-artistsBlock-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-artistsBlock-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-artistsBlock-tvOS/Pods-artistsBlock-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		BC03EAE60F9A4F0BAD44AF99 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
@@ -509,6 +523,7 @@
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
+				9F7895C1229F215100AB297A /* libRNCSlider.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
@@ -719,7 +734,11 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				9F9344C12298CA7B00EDE5CE /* RNCSlider.xcodeproj */,
+=======
+				9F78958E229F211200AB297A /* RNCSlider.xcodeproj */,
+>>>>>>> image
 				9F678EF02280E6EF00C4156F /* RNPalette.xcodeproj */,
 				9F2ECDBC2280BAD000DAC092 /* RNScreens.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -845,10 +864,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		9F9344C22298CA7B00EDE5CE /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				9F9344C62298CA7B00EDE5CE /* libRNCSlider.a */,
+=======
+		9F78958F229F211200AB297A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F7895B8229F211200AB297A /* libRNCSlider.a */,
+>>>>>>> image
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -915,7 +941,11 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+<<<<<<< HEAD
 				E0EF04810D484028D948C7C9 /* [CP] Copy Pods Resources */,
+=======
+				9FF6486728F3FD454E0826AA /* [CP] Copy Pods Resources */,
+>>>>>>> image
 			);
 			buildRules = (
 			);
@@ -993,6 +1023,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1049,8 +1080,13 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+<<<<<<< HEAD
 					ProductGroup = 9F9344C22298CA7B00EDE5CE /* Products */;
 					ProjectRef = 9F9344C12298CA7B00EDE5CE /* RNCSlider.xcodeproj */;
+=======
+					ProductGroup = 9F78958F229F211200AB297A /* Products */;
+					ProjectRef = 9F78958E229F211200AB297A /* RNCSlider.xcodeproj */;
+>>>>>>> image
 				},
 				{
 					ProductGroup = 9F678F992281104500C4156F /* Products */;
@@ -1396,11 +1432,19 @@
 			remoteRef = 9F678F9C2281104500C4156F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+<<<<<<< HEAD
 		9F9344C62298CA7B00EDE5CE /* libRNCSlider.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNCSlider.a;
 			remoteRef = 9F9344C52298CA7B00EDE5CE /* PBXContainerItemProxy */;
+=======
+		9F7895B8229F211200AB297A /* libRNCSlider.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCSlider.a;
+			remoteRef = 9F7895B7229F211200AB297A /* PBXContainerItemProxy */;
+>>>>>>> image
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
@@ -1557,7 +1601,11 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+<<<<<<< HEAD
 		E0EF04810D484028D948C7C9 /* [CP] Copy Pods Resources */ = {
+=======
+		9FF6486728F3FD454E0826AA /* [CP] Copy Pods Resources */ = {
+>>>>>>> image
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
