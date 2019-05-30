@@ -1,0 +1,1 @@
+../../../../../node_modules/react-native/Libraries/Text/BaseText/RCTBaseTextViewManager 3.h

@@ -6,6 +6,12 @@ export default class Camera extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <TouchableOpacity
+          onPress={() => this.props.toggleCamera(false)}
+          style={styles.capture}
+        >
+          <Text style={{ fontSize: 14 }}> Close </Text>
+        </TouchableOpacity>
         <RNCamera
           ref={ref => {
             this.camera = ref;
