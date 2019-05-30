@@ -27,21 +27,29 @@ const Left = ({ onPress }) => (
   </TouchableHighlight>
 );
 
-export const SignedOut = createStackNavigator({
-  Login: {
-    screen: Login,
-    navigationOptions: {
-      header: null
+export const SignedOut = createStackNavigator(
+  {
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        header: null
+      }
+    },
+    SignUp: {
+      screen: SignUp,
+      navigationOptions: {
+        title: "Sign Up",
+        headerStyle
+      }
     }
   },
-  SignUp: {
-    screen: SignUp,
+  {
+    headerMode: "none",
     navigationOptions: {
-      title: "Sign Up",
-      headerStyle
+      headerVisible: false
     }
   }
-});
+);
 
 export const SettingsNav = createStackNavigator({
   Settings: {

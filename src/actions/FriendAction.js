@@ -12,3 +12,8 @@ export const setUserImages = userImages => ({
   type: "SET_USER_IMAGES",
   payload: userImages
 });
+
+export const setPictureImages = image => ({
+  type: "SET_PICTURE_IMAGE",
+  payload: image
+});

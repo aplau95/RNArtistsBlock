@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
-  ImageBackground,
   Image,
-  Button
+  TouchableOpacity,
+  SafeAreaView
 } from "react-native";
 
-// import {
-//     Button
-// } from 'react-native-elements';
+import { Button } from "react-native-elements";
 
 import RoundTextInput from "../components/RoundTextInput";
 import Header from "../components/Header";
@@ -35,39 +32,40 @@ export class SignUp extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <ImageBackground
-          source={loginBackgroundPath}
-          style={styles.backgroundImage}
-          opacity={4 / 10}
-        >
-          <Image source={loginLogoPath} />
-          <Header title="Artists Block" />
-          <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
-          <RoundTextInput
-            onChangeText={email => this.setState({ email })}
-            width={"80%"}
-            height={50}
-            placeholder={"Email"}
-          />
-          <RoundTextInput
-            onChangeText={password => this.setState({ password })}
-            width={"80%"}
-            height={50}
-            placeholder={"Password"}
-          />
+      <SafeAreaView style={styles.container}>
+        <Header title="Artists Block" />
+        <Image source={loginLogoPath} />
+        <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
+        <RoundTextInput
+          onChangeText={email => this.setState({ email })}
+          width={"80%"}
+          height={50}
+          placeholder={"Email"}
+        />
+        <RoundTextInput
+          onChangeText={password => this.setState({ password })}
+          width={"80%"}
+          height={50}
+          placeholder={"Password"}
+        />
 
-          <Button
-            raised
-            title="Sign Up"
-            backgroundColor="#ffffff"
-            onPress={this.handleSignUp}
-            buttonStyle={{
-              width: "100%"
-            }}
-          />
-        </ImageBackground>
-      </View>
+        <Button
+          // raised
+          title="Sign Up"
+          style={styles.button}
+          backgroundColor="#ffffff"
+          onPress={() => this.handleSignUp()}
+          buttonStyle={{
+            width: "100%"
+          }}
+        />
+        <View style={styles.loginContainer}>
+          <Text style={(color = "black")}> Already have an account? </Text>
+          <TouchableOpacity onPress={() => navigate("Login")}>
+            <Text style={styles.login}> Login In </Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     );
   }
 }
@@ -75,15 +73,21 @@ export class SignUp extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "column",
+    // justifyContent: "center",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF",
-    backgroundColor: "rgba(255,0,0,0.5)"
+    backgroundColor: "#F5FCFF"
   },
-  backgroundImage: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center"
+  button: {
+    padding: 10
+  },
+  login: {
+    color: "red"
+  },
+  loginContainer: {
+    // flex: 1,
+    flexDirection: "row",
+    padding: 10
   }
 });

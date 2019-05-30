@@ -5,7 +5,8 @@ const INITIAL_STATE = {
   windowWidth: 0,
   windowHeight: 0,
   userId: "",
-  userImages: []
+  userImages: [],
+  pictureImages: []
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -25,6 +26,13 @@ const reducer = (state = INITIAL_STATE, action) => {
         userImages: [...state.userImages, userImage]
       };
       return newState3;
+    case "SET_PICTURE_IMAGES":
+      const pictureImage = action.payload;
+      const newState4 = {
+        ...state,
+        pictureImages: [...state.pictureImages, pictureImage]
+      };
+      return newState4;
     default:
       return state;
   }
