@@ -21,6 +21,12 @@ const headerStyle = {
   marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
 };
 
+const Left = ({ onPress }) => (
+  <TouchableHighlight onPress={onPress}>
+    <Text>Cancel</Text>
+  </TouchableHighlight>
+);
+
 export const SignedOut = createStackNavigator({
   Login: {
     screen: Login,
@@ -63,10 +69,32 @@ export const SettingsNav = createStackNavigator({
   }
 });
 
+export const PaintNav = createStackNavigator(
+  {
+    Paint: {
+      screen: Paint
+    },
+    Camera: {
+      screen: Camera
+      // navigationOptions: {
+      //   header: ({ goBack }) => ({
+      //     left: <Left onPress={goBack} />
+      //   })
+      // }
+    }
+  },
+  {
+    headerMode: "none",
+    navigationOptions: {
+      headerVisible: false
+    }
+  }
+);
+
 export const SignedIn = createBottomTabNavigator(
   {
     Paint: {
-      screen: Paint,
+      screen: PaintNav,
       navigationOptions: {
         tabBarLabel: "Paint"
       }
@@ -81,12 +109,6 @@ export const SignedIn = createBottomTabNavigator(
       screen: SettingsNav,
       navigationOptions: {
         tabBarLabel: "Settings"
-      }
-    },
-    Camera: {
-      screen: Camera,
-      navigationOptions: {
-        tabBarLabel: "Camera"
       }
     }
   },

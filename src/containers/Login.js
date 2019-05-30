@@ -30,12 +30,6 @@ class Login extends Component {
     errorMessage: null
   };
 
-  getAllrefs = ref => {
-    for (var key in ref) {
-      this.props.setUserImages();
-    }
-  };
-
   getUserData = async userId => {
     const ref = firebase.firestore().collection(userId);
     const collection = await ref.get();
