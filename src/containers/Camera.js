@@ -3,15 +3,43 @@ import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
 import { RNCamera } from "react-native-camera";
 import { SafeAreaView } from "react-navigation";
 import { alertMe } from "../utils/utils";
-export default class Camera extends Component {
-  constructor() {
-    super();
+import { connect } from "react-redux";
+
+class Camera extends Component {
+  constructor(props) {
+    super(props);
   }
   state = {
     image: require("../../assets/loginLogo.png"),
-    imagePreview: false
+    imagePreview: false,
+    referenceURL: "",
+    pictureURL: "",
+    uploading: false
   };
 
+  uploadAndPush = () => {
+    this.setState({ uploading: true });
+    const { navigate } = this.props.navigation;
+    this.props.navigation.state.params
+      .uploadImage(
+        this.props.navigation.state.params.currentReference,
+        this.props.quality.userId
+      )
+      .then(currentRefURL => {
+        this.setState({ referenceURL: currentRefURL });
+        this.props.navigation.state.params
+          .uploadImage(this.state.image, this.props.quality.userId)
+          .then(picURL => {
+            this.setState({ pictureURL: picURL });
+          })
+          .then(() => {
+            this.props.navigation.state.params.pushImage(
+              this.state.referenceURL,
+              this.state.pictureURL
+            );
+          });
+      });
+  };
   render() {
     const { navigate } = this.props.navigation;
     if (this.state.imagePreview === false) {
@@ -28,7 +56,7 @@ export default class Camera extends Component {
               onPress={() => navigate("Paint")}
               style={styles.close}
             >
-              <Text style={{ fontSize: 14, color: "white" }}> Close </Text>
+              <Text style={{ fontSize: 14, color: "white" }}>Exit Camera</Text>
             </TouchableOpacity>
           </View>
           <RNCamera
@@ -69,7 +97,7 @@ export default class Camera extends Component {
         <SafeAreaView style={styles.container}>
           <View
             style={{
-              flex: 0,
+              flex: 1,
               flexDirection: "row",
               justifyContent: "space-between"
             }}
@@ -81,10 +109,12 @@ export default class Camera extends Component {
               <Text style={{ fontSize: 14, color: "white" }}> Close </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.cancelPreview()}
+              onPress={() => this.uploadAndPush()}
               style={styles.close}
             >
-              <Text style={{ fontSize: 14, color: "white" }}> Cancel </Text>
+              <Text style={{ fontSize: 14, color: "white" }}>
+                Select and Upload
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => this.cancelPreview()}
@@ -118,6 +148,16 @@ export default class Camera extends Component {
     this.setState({ imagePreview: false });
   };
 }
+
+const mapStateToProps = state => {
+  const { quality } = state;
+  return { quality };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Camera);
 
 const styles = StyleSheet.create({
   container: {

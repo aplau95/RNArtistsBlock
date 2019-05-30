@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 
-import { StyleSheet, View, ImageBackground, Image, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  SafeAreaView,
+  Image,
+  Text,
+  TouchableOpacity
+} from "react-native";
 
 import { Button } from "react-native-elements";
 
@@ -8,28 +16,44 @@ import RoundTextInput from "../components/RoundTextInput";
 import Header from "../components/Header";
 import firebase from "react-native-firebase";
 
-const loginBackgroundPath = require("../../assets/loginBackground.jpg");
-const loginLogoPath = require("../../assets/loginLogo.png");
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
   setUserId,
   changeQuality,
-  setUserImages
+  setUserImages,
+  setPictureImages
 } from "../actions/FriendAction";
 
 import { alertMe } from "../utils/utils";
+
+const loginBackgroundPath = require("../../assets/loginBackground.jpg");
+const loginLogoPath = require("../../assets/loginLogo.png");
 
 class Login extends Component {
   constructor() {
     super();
   }
   state = {
-    email: "love4snuggles@gmail.com",
+    email: "bamgimmeegg@gmail.com",
     password: "Pokemaster",
     errorMessage: null
   };
 
+  getPasswordReset = () => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(this.state.email)
+      .then(() => {
+        alertMe(
+          "Password Reset",
+          `Password reset link sent to ${this.state.email}`
+        );
+      })
+      .catch(function(error) {
+        // An error happened.
+      });
+  };
   getUserData = async userId => {
     const ref = firebase.firestore().collection(userId);
     const collection = await ref.get();
@@ -39,7 +63,7 @@ class Login extends Component {
     });
   };
 
-  handleSignIn = () => {
+  handleSignIn = (email, password) => {
     firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -55,47 +79,43 @@ class Login extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <ImageBackground
-          source={loginBackgroundPath}
-          style={styles.backgroundImage}
-          opacity={4 / 10}
-        >
-          <Image source={loginLogoPath} />
-          <Header title="Artists Block" />
-          <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
-          <RoundTextInput
-            onChangeText={email => this.setState({ email })}
-            width={"80%"}
-            height={50}
-            placeholder={"Bamgimmeegg@gmail.com"}
-          />
-          <RoundTextInput
-            onChangeText={password => this.setState({ password })}
-            width={"80%"}
-            height={50}
-            placeholder={"pokemaster"}
-          />
-          <Button
-            raised
-            title="Login"
-            backgroundColor="#ffffff"
-            onPress={() => this.handleSignIn()}
-            buttonStyle={{
-              width: "100%"
-            }}
-          />
-          <Button
-            raised
-            title="Sign Up"
-            backgroundColor="#ffffff"
-            onPress={() => navigate("SignUp")}
-            buttonStyle={{
-              width: "100%"
-            }}
-          />
-        </ImageBackground>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <Header title="Artists Block" />
+        <Image source={loginLogoPath} />
+        <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
+        <RoundTextInput
+          onChangeText={email => this.setState({ email })}
+          width={"80%"}
+          height={50}
+          placeholder={"Bamgimmeegg@gmail.com"}
+        />
+        <RoundTextInput
+          onChangeText={password => this.setState({ password })}
+          style={styles.button}
+          width={"80%"}
+          height={50}
+          placeholder={"pokemaster"}
+        />
+        <Button
+          // raised
+          title="Login"
+          style={styles.button}
+          backgroundColor="#ffffff"
+          onPress={() => this.handleSignIn()}
+          buttonStyle={{
+            width: "100%"
+          }}
+        />
+        <TouchableOpacity onPress={() => this.getPasswordReset()}>
+          <Text style={styles.forgotPassword}> Forgot Password? </Text>
+        </TouchableOpacity>
+        <View style={styles.signupContainer}>
+          <Text style={(color = "black")}> Don't have an account? </Text>
+          <TouchableOpacity onPress={() => navigate("SignUp")}>
+            <Text style={styles.signup}> Register Here </Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     );
   }
 }
@@ -110,7 +130,8 @@ const mapDispatchToProps = dispatch =>
     {
       setUserId,
       changeQuality,
-      setUserImages
+      setUserImages,
+      setPictureImages
     },
     dispatch
   );
@@ -123,14 +144,25 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF"
   },
-  backgroundImage: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center"
+  forgotPassword: {
+    fontSize: 14,
+    color: "grey",
+    padding: 10
+  },
+  button: {
+    padding: 10
+  },
+  signup: {
+    color: "red"
+  },
+  signupContainer: {
+    // flexSelf: 1,
+    flexDirection: "row",
+    padding: 10
   }
 });

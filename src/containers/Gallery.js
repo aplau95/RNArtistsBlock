@@ -20,17 +20,24 @@ class MyListItem extends React.PureComponent {
   };
 
   render() {
-    const textColor = this.props.selected ? "red" : "black";
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <View>
+        <View style={styles.listView}>
           <Image
-            resizeMode={"center"}
+            resizeMode={"contain"}
             style={{ width: 200, height: 100 }}
             source={{
-              uri: this.props.title
+              uri: this.props.title.referenceImage
             }}
-            key={this.props.title}
+            key={this.props.title.referenceImage}
+          />
+          <Image
+            resizeMode={"contain"}
+            style={{ width: 200, height: 100 }}
+            source={{
+              uri: this.props.title.pictureImage
+            }}
+            key={this.props.title.pictureImage}
           />
           {/* <Text style={{ color: textColor }}>{this.props.title}</Text> */}
         </View>
@@ -56,10 +63,10 @@ export class Gallery extends Component {
 
   _renderItem = ({ item }) => (
     <MyListItem
-      id={item.piece}
+      id={item}
       onPressItem={this._onPressItem}
       selected={!!this.state.selected.get(item.id)}
-      title={item.piece}
+      title={item}
     />
   );
 
@@ -72,24 +79,6 @@ export class Gallery extends Component {
             renderItem={this._renderItem}
             keyExtractor={this._keyExtractor}
           />
-          {/* <SectionList
-            renderItem={({ item, index, section }) => (
-              <Text key={index}>{item}</Text>
-            )}
-            renderSectionHeader={({ section: { title } }) => (
-              <Text style={{ fontWeight: "bold" }}>{title}</Text>
-            )}
-            sections={[
-              { title: "Title1", data: ["item1", "item2"] },
-              { title: "Title2", data: ["item3", "item4"] },
-              { title: "Title3", data: ["item5", "item6"] },
-              {
-                title: "Title4",
-                data: ["item5", "item6"]
-              }
-            ]}
-            keyExtractor={(item, index) => item + index}
-          /> */}
         </View>
       </SafeAreaView>
     );
@@ -112,5 +101,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF"
+  },
+  listView: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between"
   }
 });

@@ -5,9 +5,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   Image,
-  Alert,
+  ImageBackground,
   Dimensions,
   SafeAreaView,
   TouchableHighlight,
@@ -42,9 +41,8 @@ class Paint extends Component {
       bodyTextColor: [],
       imageHeight: 100,
       imageWidth: 100,
-      uploading: false,
-      progress: 0,
-      images: []
+      // uploading: false,
+      progress: 0
     };
   }
 
@@ -55,57 +53,49 @@ class Paint extends Component {
     this.setState({ population: [] });
   };
 
-  _addImageRef = imageRef => {
-    this.ref.add({
-      piece: imageRef
-      // referenceImage:
+  uploadImage = (image, userId) => {
+    return new Promise(function(resolve, reject) {
+      const imageExt = String(image)
+        .split(".")
+        .pop(); // Extract image extension
+      const imageFilename = `${uuid()}.${imageExt}`; // Generate unique name
+      // this.alertMe(filename);
+      // this.setState({ uploading: true });
+      firebase
+        .storage()
+        .ref(`${userId}/${imageFilename}`)
+        .putFile(image)
+        .on(
+          firebase.storage.TaskEvent.STATE_CHANGED,
+          snapshot => {
+            let state = {};
+            state = {
+              ...state,
+              onDefaultImage: false,
+              progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100, // Calculate progress percentage
+              images: []
+            };
+            if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+              resolve(snapshot.downloadURL);
+            }
+          },
+          error => {
+            unsubscribe();
+            alert("Sorry, Try again.");
+          }
+        );
     });
   };
 
-  uploadImage = () => {
-    const ext = String(this.state.imageUri)
-      .split(".")
-      .pop(); // Extract image extension
-    // this.alertMe(ext);
-    const filename = `${uuid()}.${ext}`; // Generate unique name
-    // this.alertMe(filename);
-    this.setState({ uploading: true });
-    firebase
-      .storage()
-      .ref(`tutorials/images/${this.props.quality.userId}/${filename}`)
-      .putFile(this.state.imageUri)
-      .on(
-        firebase.storage.TaskEvent.STATE_CHANGED,
-        snapshot => {
-          let state = {};
-          state = {
-            ...state,
-            progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100, // Calculate progress percentage
-            images: []
-          };
-          if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
-            const allImages = this.state.images;
-            allImages.push(snapshot.downloadURL);
-            allImages.map(function(item, i) {
-              this._addImageRef(item);
-            }, this);
-          }
-          this.setState(state);
-        },
-        error => {
-          unsubscribe();
-          alert("Sorry, Try again.");
-        }
-      );
-  };
-
-  getSwatches = imageUrl => {};
   getColor = () => {
     const quality = {
       threshhold: false,
       quality: this.props.quality.current
     };
     ImagePicker.launchImageLibrary({}, response => {
+      this.setState({
+        onDefaultImage: false
+      });
       var path = Platform.OS === "ios" ? response.origURL : response.path;
       const source = { uri: response.uri };
       this.setState({ imageSource: source, imageUri: response.uri });
@@ -133,11 +123,6 @@ class Paint extends Component {
         }
       });
     });
-  };
-
-  getArrays = () => {
-    alertMe(JSON.stringify(this.state.colors));
-    alertMe(JSON.stringify(this.state.population));
   };
 
   toPercent = ratio => {
@@ -190,12 +175,27 @@ class Paint extends Component {
       }
     );
   };
+
+  pushImage = (referenceImage, pictureImage) => {
+    this.ref.add({
+      referenceImage: referenceImage,
+      pictureImage: pictureImage
+    });
+  };
+
+  navigateToCamera = () => {
+    const { navigate } = this.props.navigation;
+    // alertMe(this.state.onDefaultImage);
+    if (this.state.onDefaultImage == false) {
+      navigate("Camera", {
+        pushImage: this.pushImage.bind(this),
+        // testFunc: this.testFunc.bind(this),
+        currentReference: this.state.imageUri
+      });
+    }
+  };
   render() {
     const { navigate } = this.props.navigation;
-    if (!this.state.onDefaultImage) {
-      this.getImageDim(this.state.imageUrl2);
-    }
-
     const dimensions = Dimensions.get("window");
     const extractQuality =
       "Color Extraction Quality: " +
@@ -227,29 +227,44 @@ class Paint extends Component {
               justifyContent: "center",
               alignItems: "center"
             }}
-            onPress={() => this.uploadImage()}
-          >
-            <Text>Get Camera</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={{
-              width: imageViewWidth / 2 - 2,
-              height: (windowHeight * 0.5) / 16,
-              flex: 1,
-              justifyContent: "center",
-              alignItems: "center"
+            onPress={() => {
+              if (!this.state.onDefaultImage) {
+                navigate("Camera", {
+                  pushImage: this.pushImage.bind(this),
+                  uploadImage: this.uploadImage.bind(this),
+                  currentReference: this.state.imageUri
+                });
+              } else {
+                alertMe("Extracting Image", "Please wait one moment...");
+              }
             }}
-            onPress={() => navigate("Camera")}
           >
-            <Text>Get Data</Text>
+            <Text>Open Camera</Text>
           </TouchableHighlight>
         </View>
-        <Image
+        <ImageBackground
           resizeMode={"center"}
-          style={{ width: imageViewWidth, height: imageViewHeight }}
+          style={{
+            flexDirection: "column",
+            width: imageViewWidth,
+            height: imageViewHeight,
+            alignItems: "center"
+          }}
           source={this.state.imageSource}
           key={this.state.imageUri}
-        />
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              color: "black",
+              position: "absolute", // child
+              top: imageViewHeight / 2 + 40
+            }}
+          >
+            Click Get Photo To Begin
+          </Text>
+        </ImageBackground>
         <Text style={styles.qualityText}>{extractQuality}</Text>
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
           {this.colorsList(dimensions.width, (windowHeight * 8) / 16)}
