@@ -10,6 +10,7 @@ import {
 
 import Paint from "../containers/Paint";
 import Login from "../containers/Login";
+import Camera from "../containers/Camera";
 import { SignUp } from "../containers/SignUp";
 import Gallery from "../containers/Gallery";
 import Settings from "../containers/settings/Settings";
@@ -80,6 +81,12 @@ export const SignedIn = createBottomTabNavigator(
       screen: SettingsNav,
       navigationOptions: {
         tabBarLabel: "Settings"
+      }
+    },
+    Camera: {
+      screen: Camera,
+      navigationOptions: {
+        tabBarLabel: "Camera"
       }
     }
   },

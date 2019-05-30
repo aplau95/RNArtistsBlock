@@ -1,0 +1,1 @@
+../../../../../../node_modules/react-native/React/Base/RCTTouchHandler 3.h
