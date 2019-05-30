@@ -44,8 +44,7 @@ class Paint extends Component {
       imageWidth: 100,
       uploading: false,
       progress: 0,
-      images: [],
-      cameraOpen: false
+      images: []
     };
   }
 
@@ -180,10 +179,6 @@ class Paint extends Component {
     });
   };
 
-  toggleCamera = status => {
-    this.setState({ cameraOpen: status });
-  };
-
   getImageDim = url => {
     Image.getSize(
       url,
@@ -196,6 +191,7 @@ class Paint extends Component {
     );
   };
   render() {
+    const { navigate } = this.props.navigation;
     if (!this.state.onDefaultImage) {
       this.getImageDim(this.state.imageUrl2);
     }
@@ -208,62 +204,58 @@ class Paint extends Component {
     var imageViewHeight = (windowHeight * 6) / 16;
     var imageViewWidth = dimensions.width;
 
-    if (this.state.cameraOpen === false) {
-      return (
-        <SafeAreaView style={styles.container}>
-          <View style={styles.buttonContainer}>
-            <TouchableHighlight
-              style={{
-                width: imageViewWidth / 2 - 2,
-                height: (windowHeight * 0.5) / 16,
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-              onPress={() => this.getColor()}
-            >
-              <Text>Get Photo</Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={{
-                width: imageViewWidth / 2 - 2,
-                height: (windowHeight * 0.5) / 16,
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-              onPress={() => this.uploadImage()}
-            >
-              <Text>Get Camera</Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={{
-                width: imageViewWidth / 2 - 2,
-                height: (windowHeight * 0.5) / 16,
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-              onPress={() => this.toggleCamera(true)}
-            >
-              <Text>Get Data</Text>
-            </TouchableHighlight>
-          </View>
-          <Image
-            resizeMode={"center"}
-            style={{ width: imageViewWidth, height: imageViewHeight }}
-            source={this.state.imageSource}
-            key={this.state.imageUri}
-          />
-          <Text style={styles.qualityText}>{extractQuality}</Text>
-          <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
-            {this.colorsList(dimensions.width, (windowHeight * 8) / 16)}
-          </View>
-        </SafeAreaView>
-      );
-    } else {
-      return <Camera toggleCamera={this.toggleCamera} />;
-    }
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <TouchableHighlight
+            style={{
+              width: imageViewWidth / 2 - 2,
+              height: (windowHeight * 0.5) / 16,
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+            onPress={() => this.getColor()}
+          >
+            <Text>Get Photo</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={{
+              width: imageViewWidth / 2 - 2,
+              height: (windowHeight * 0.5) / 16,
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+            onPress={() => this.uploadImage()}
+          >
+            <Text>Get Camera</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={{
+              width: imageViewWidth / 2 - 2,
+              height: (windowHeight * 0.5) / 16,
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+            onPress={() => navigate("Camera")}
+          >
+            <Text>Get Data</Text>
+          </TouchableHighlight>
+        </View>
+        <Image
+          resizeMode={"center"}
+          style={{ width: imageViewWidth, height: imageViewHeight }}
+          source={this.state.imageSource}
+          key={this.state.imageUri}
+        />
+        <Text style={styles.qualityText}>{extractQuality}</Text>
+        <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
+          {this.colorsList(dimensions.width, (windowHeight * 8) / 16)}
+        </View>
+      </SafeAreaView>
+    );
   }
 }
 
