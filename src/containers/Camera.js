@@ -4,41 +4,90 @@ import { RNCamera } from "react-native-camera";
 import { SafeAreaView } from "react-navigation";
 import { alertMe } from "../utils/utils";
 import { connect } from "react-redux";
+import firebase from "react-native-firebase";
+
+import UploadModal from "../components/UploadModal";
+import uuid from "uuid/v4"; // Import UUID to generate UUID
 
 class Camera extends Component {
   constructor(props) {
     super(props);
+    this.date = new Date();
+    this.progress = 0;
   }
   state = {
     image: require("../../assets/loginLogo.png"),
     imagePreview: false,
     referenceURL: "",
     pictureURL: "",
-    uploading: false
+    uploading: false,
+    progress: 0,
+    timestamp: ""
+  };
+
+  uploadImage = (image, userId) => {
+    return new Promise(function(resolve, reject) {
+      const imageExt = String(image)
+        .split(".")
+        .pop(); // Extract image extension
+      const imageFilename = `${uuid()}.${imageExt}`; // Generate unique name
+
+      // this.setState({ uploading: true });
+      firebase
+        .storage()
+        .ref(`${userId}/${imageFilename}`)
+        .putFile(image)
+        .on(
+          firebase.storage.TaskEvent.STATE_CHANGED,
+          snapshot => {
+            let state = {};
+            state = {
+              ...state,
+              progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Calculate progress percentage
+            };
+            if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+              resolve(snapshot.downloadURL);
+            }
+          },
+          error => {
+            unsubscribe();
+            alert("Sorry, Try again.");
+          }
+        );
+    });
+  };
+
+  uploadModal = () => {
+    var display;
+    if (this.state.uploading) {
+      display = <UploadModal progress={this.state.progress} />;
+    }
+    return display;
   };
 
   uploadAndPush = () => {
     this.setState({ uploading: true });
     const { navigate } = this.props.navigation;
-    this.props.navigation.state.params
-      .uploadImage(
-        this.props.navigation.state.params.currentReference,
-        this.props.quality.userId
-      )
-      .then(currentRefURL => {
-        this.setState({ referenceURL: currentRefURL });
-        this.props.navigation.state.params
-          .uploadImage(this.state.image, this.props.quality.userId)
-          .then(picURL => {
-            this.setState({ pictureURL: picURL });
-          })
-          .then(() => {
-            this.props.navigation.state.params.pushImage(
-              this.state.referenceURL,
-              this.state.pictureURL
-            );
-          });
-      });
+    this.uploadImage(
+      this.props.navigation.state.params.currentReference,
+      this.props.quality.userId
+    ).then(currentRefURL => {
+      this.setState({ referenceURL: currentRefURL });
+      this.uploadImage(this.state.image, this.props.quality.userId)
+        .then(picURL => {
+          this.setState({ pictureURL: picURL });
+        })
+        .then(() => {
+          this.props.navigation.state.params.pushImage(
+            this.state.referenceURL,
+            this.state.pictureURL,
+            this.date.toUTCString()
+          );
+        })
+        .then(() => {
+          this.setState({ uploading: false });
+        });
+    });
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -120,9 +169,13 @@ class Camera extends Component {
               onPress={() => this.cancelPreview()}
               style={styles.close}
             >
-              <Text style={{ fontSize: 14, color: "white" }}> Cancel </Text>
+              <Text style={{ fontSize: 14, color: "white" }}>
+                {" "}
+                {this.state.progress}{" "}
+              </Text>
             </TouchableOpacity>
           </View>
+          {/* {this.uploadModal()} */}
           <Image
             style={styles.preview}
             resizeMode={"contain"}

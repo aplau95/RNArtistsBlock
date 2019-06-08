@@ -1,10 +1,8 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React from "react";
+import { Text } from "react-native";
 
-const Header = (props) => {
-  return (
-    <Text style={styles.viewStyles}>{props.title}</Text>
-  )
+const Header = props => {
+  return <Text style={styles.viewStyles}>{props.title}</Text>;
 };
 
 const styles = {
@@ -12,15 +10,15 @@ const styles = {
     margin: 9,
     padding: 9,
     fontSize: 32,
-    shadowColor: '#ddd',
+    shadowColor: "#ddd",
     height: 60,
-    paddingTop: 14,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    borderColor: '#fff',
-    borderBottomWidth: 4,
+    paddingTop: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    borderColor: "#fff",
+    borderBottomWidth: 4
   }
-}
+};
 
 export default Header;

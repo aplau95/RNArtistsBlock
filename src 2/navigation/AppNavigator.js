@@ -10,9 +10,8 @@ import {
 
 import Paint from "../containers/Paint";
 import Login from "../containers/Login";
-import Camera from "../containers/Camera";
 import { SignUp } from "../containers/SignUp";
-import Gallery from "../containers/Gallery";
+import { Gallery } from "../containers/Gallery";
 import Settings from "../containers/settings/Settings";
 import { ReferencePhotos } from "../containers/settings/ReferencePhotos";
 import { PaintColors } from "../containers/settings/PaintColors";
@@ -21,35 +20,21 @@ const headerStyle = {
   marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
 };
 
-const Left = ({ onPress }) => (
-  <TouchableHighlight onPress={onPress}>
-    <Text>Cancel</Text>
-  </TouchableHighlight>
-);
-
-export const SignedOut = createStackNavigator(
-  {
-    Login: {
-      screen: Login,
-      navigationOptions: {
-        header: null
-      }
-    },
-    SignUp: {
-      screen: SignUp,
-      navigationOptions: {
-        title: "Sign Up",
-        headerStyle
-      }
+export const SignedOut = createStackNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions: {
+      header: null
     }
   },
-  {
-    headerMode: "none",
+  SignUp: {
+    screen: SignUp,
     navigationOptions: {
-      headerVisible: false
+      title: "Sign Up",
+      headerStyle
     }
   }
-);
+});
 
 export const SettingsNav = createStackNavigator({
   Settings: {
@@ -77,32 +62,10 @@ export const SettingsNav = createStackNavigator({
   }
 });
 
-export const PaintNav = createStackNavigator(
-  {
-    Paint: {
-      screen: Paint
-    },
-    Camera: {
-      screen: Camera
-      // navigationOptions: {
-      //   header: ({ goBack }) => ({
-      //     left: <Left onPress={goBack} />
-      //   })
-      // }
-    }
-  },
-  {
-    headerMode: "none",
-    navigationOptions: {
-      headerVisible: false
-    }
-  }
-);
-
 export const SignedIn = createBottomTabNavigator(
   {
     Paint: {
-      screen: PaintNav,
+      screen: Paint,
       navigationOptions: {
         tabBarLabel: "Paint"
       }
@@ -129,7 +92,7 @@ export const SignedIn = createBottomTabNavigator(
   }
 );
 
-export const createRootNavigator = signedIn => {
+export const createRootNavigator = (signedIn = false) => {
   return createAppContainer(
     createSwitchNavigator(
       {

@@ -73,8 +73,6 @@ class Login extends Component {
       })
       .then(() => this.props.navigation.navigate("SignedIn"))
       .catch(error => this.setState({ errorMessage: error.message }));
-
-    // .then(() => this.props.navigation.navigate("SignedIn"));
   };
   render() {
     const { navigate } = this.props.navigation;

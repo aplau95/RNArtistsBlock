@@ -1,1 +1,0 @@
-../../../../../../node_modules/react-native/React/Views/RCTSwitchManager 3.h

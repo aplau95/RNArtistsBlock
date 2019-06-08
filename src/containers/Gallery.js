@@ -12,39 +12,9 @@ import {
   Image
 } from "react-native";
 
+import ListItem from "../components/ListItem";
+import Header from "../components/Header";
 import { connect } from "react-redux";
-
-class MyListItem extends React.PureComponent {
-  _onPress = () => {
-    this.props.onPressItem(this.props.id);
-  };
-
-  render() {
-    return (
-      <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.listView}>
-          <Image
-            resizeMode={"contain"}
-            style={{ width: 200, height: 100 }}
-            source={{
-              uri: this.props.title.referenceImage
-            }}
-            key={this.props.title.referenceImage}
-          />
-          <Image
-            resizeMode={"contain"}
-            style={{ width: 200, height: 100 }}
-            source={{
-              uri: this.props.title.pictureImage
-            }}
-            key={this.props.title.pictureImage}
-          />
-          {/* <Text style={{ color: textColor }}>{this.props.title}</Text> */}
-        </View>
-      </TouchableOpacity>
-    );
-  }
-}
 
 export class Gallery extends Component {
   state = { selected: (new Map(): Map<string, boolean>) };
@@ -62,7 +32,7 @@ export class Gallery extends Component {
   };
 
   _renderItem = ({ item }) => (
-    <MyListItem
+    <ListItem
       id={item}
       onPressItem={this._onPressItem}
       selected={!!this.state.selected.get(item.id)}
@@ -70,12 +40,20 @@ export class Gallery extends Component {
     />
   );
 
+  sortByDate = array => {
+    array.sort((a, b) => {
+      return new Date(b.timestamp) - new Date(a.timestamp);
+    });
+    return array;
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <View>
+          <Header title="Gallery" />
           <FlatList
-            data={this.props.quality.userImages}
+            data={this.sortByDate(this.props.quality.userImages)}
             renderItem={this._renderItem}
             keyExtractor={this._keyExtractor}
           />
@@ -103,7 +81,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF"
   },
   listView: {
+    borderRadius: 20,
+    color: "red",
     flex: 1,
+    width: "90%",
     flexDirection: "row",
     justifyContent: "space-between"
   }

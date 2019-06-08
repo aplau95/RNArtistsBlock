@@ -1,1 +1,0 @@
-../../../../../../node_modules/react-native/React/Modules/RCTStatusBarManager 2.h
