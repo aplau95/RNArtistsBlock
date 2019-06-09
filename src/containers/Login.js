@@ -23,7 +23,7 @@ import {
   changeQuality,
   setUserImages,
   setPictureImages
-} from "../actions/FriendAction";
+} from "../actions/ActionCreators";
 
 import { alertMe } from "../utils/utils";
 

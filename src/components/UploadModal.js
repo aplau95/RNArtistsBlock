@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Modal, Text, TouchableHighlight, View, Alert } from "react-native";
+import {
+  Modal,
+  Text,
+  TouchableHighlight,
+  View,
+  Alert,
+  ActivityIndicator
+} from "react-native";
 
 export default class UploadModal extends Component {
   constructor(props) {
@@ -17,36 +24,33 @@ export default class UploadModal extends Component {
   render() {
     return (
       <View style={{ marginTop: 22 }}>
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-          }}
-        >
-          <View style={{ marginTop: 22 }}>
-            <View>
-              <Text>Hello World!</Text>
-
-              <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                }}
-              >
-                <Text>{this.props.progress}</Text>
-              </TouchableHighlight>
+        <Modal transparent={true} onRequestClose={() => null} visible={true}>
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: "#dcdcdc",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#00000080"
+            }}
+          >
+            <View
+              style={{
+                borderRadius: 10,
+                padding: 25,
+                backgroundColor: "#fff"
+              }}
+            >
+              <ActivityIndicator size="large" />
+              <Text style={{ fontSize: 20, fontWeight: "200" }}>
+                Uploading Item {this.props.itemNum}/2
+              </Text>
+              <Text style={{ fontSize: 20, fontWeight: "200" }}>
+                {this.props.progress.toFixed(2)}%
+              </Text>
             </View>
           </View>
         </Modal>
-
-        <TouchableHighlight
-          onPress={() => {
-            this.setModalVisible(true);
-          }}
-        >
-          <Text>Show Modal</Text>
-        </TouchableHighlight>
       </View>
     );
   }

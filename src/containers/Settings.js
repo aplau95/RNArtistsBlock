@@ -7,17 +7,16 @@ import {
   View,
   Button,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  SafeAreaView
 } from "react-native";
 
 import { connect } from "react-redux";
-import { ReferencePhotos } from "./ReferencePhotos";
-import { PaintColors } from "./PaintColors";
-import { RoundTextInput } from "../../components/RoundTextInput";
+import Header from "../components/Header";
 import Slider from "@react-native-community/slider";
 
 import { bindActionCreators } from "redux";
-import { changeQuality } from "../../actions/FriendAction";
+import { changeQuality } from "../actions/ActionCreators";
 
 class Settings extends React.PureComponent {
   getValue = () => {
@@ -49,9 +48,10 @@ class Settings extends React.PureComponent {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
+        {/* <View> */}
+        <Header title="Settings" />
         <Text>{this.props.quality.current}</Text>
-        <Text>{this.props.quality.userId}</Text>
         <Slider
           step={1}
           value={this.getValue()}
@@ -62,7 +62,8 @@ class Settings extends React.PureComponent {
           minimumTrackTintColor="#FFFFFF"
           maximumTrackTintColor="#000000"
         />
-      </View>
+        {/* </View> */}
+      </SafeAreaView>
     );
   }
 }
@@ -88,7 +89,7 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF"
   },

@@ -13,9 +13,10 @@ import Login from "../containers/Login";
 import Camera from "../containers/Camera";
 import { SignUp } from "../containers/SignUp";
 import Gallery from "../containers/Gallery";
-import Settings from "../containers/settings/Settings";
-import { ReferencePhotos } from "../containers/settings/ReferencePhotos";
-import { PaintColors } from "../containers/settings/PaintColors";
+import Settings from "../containers/Settings";
+import { alertMe } from "../utils/utils";
+
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const headerStyle = {
   marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -50,32 +51,6 @@ export const SignedOut = createStackNavigator(
     }
   }
 );
-
-export const SettingsNav = createStackNavigator({
-  Settings: {
-    screen: Settings,
-    navigationOptions: {
-      title: "Settings",
-      headerRight: (
-        <Button
-          onPress={() => alert("This is a button!")}
-          title="Sign Out"
-          color="#000000"
-        />
-      )
-    }
-  },
-  ReferencePhotos: {
-    screen: ReferencePhotos
-  },
-  PaintColors: {
-    screen: PaintColors,
-    navigationOptions: {
-      title: "Sign Up",
-      headerStyle
-    }
-  }
-});
 
 export const PaintNav = createStackNavigator(
   {
@@ -114,14 +89,39 @@ export const SignedIn = createBottomTabNavigator(
       }
     },
     Settings: {
-      screen: SettingsNav,
+      screen: Settings,
       navigationOptions: {
         tabBarLabel: "Settings"
       }
     }
   },
   {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let IconComponent = Icon;
+        let iconName;
+        let fill;
+        if (routeName === "Paint") {
+          iconName = "paint-brush";
+          fill = focused ? "#4d9eff" : "#000000";
+          // IconComponent = HomeIconWithBadge;
+        } else if (routeName === "Settings") {
+          iconName = `cog`;
+          fill = focused ? "#4d9eff" : "#000000";
+        } else if (routeName === "Gallery") {
+          iconName = `align-center`;
+          fill = focused ? "#4d9eff" : "#000000";
+        }
+
+        // You can return any component that you like here!
+        return <IconComponent name={iconName} size={20} color={fill} />;
+      }
+    }),
     tabBarOptions: {
+      activeTintColor: "#4d9eff",
+      inactiveTintColor: "#000000",
+      showIcon: true,
       style: {
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
       }

@@ -17,7 +17,7 @@ import { RoundTextInput } from "../../components/RoundTextInput";
 import Slider from "@react-native-community/slider";
 
 import { bindActionCreators } from "redux";
-import { changeQuality } from "../../actions/FriendAction";
+import { changeQuality } from "../../actions/ActionCreators";
 
 // class MyListItem extends React.PureComponent {
 //   _onPress = () => {

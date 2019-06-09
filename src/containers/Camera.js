@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+  Alert
+} from "react-native";
 import { RNCamera } from "react-native-camera";
 import { SafeAreaView } from "react-navigation";
 import { alertMe } from "../utils/utils";
@@ -22,10 +29,12 @@ class Camera extends Component {
     pictureURL: "",
     uploading: false,
     progress: 0,
-    timestamp: ""
+    timestamp: "",
+    itemNum: 1
   };
 
-  uploadImage = (image, userId) => {
+  uploadImage = (image, userId, that) => {
+    // var that = this;
     return new Promise(function(resolve, reject) {
       const imageExt = String(image)
         .split(".")
@@ -45,7 +54,9 @@ class Camera extends Component {
               ...state,
               progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Calculate progress percentage
             };
+            that.setState(state);
             if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+              that.setState({ progress: 100 });
               resolve(snapshot.downloadURL);
             }
           },
@@ -60,20 +71,27 @@ class Camera extends Component {
   uploadModal = () => {
     var display;
     if (this.state.uploading) {
-      display = <UploadModal progress={this.state.progress} />;
+      display = (
+        <UploadModal
+          progress={this.state.progress}
+          itemNum={this.state.itemNum}
+        />
+      );
     }
     return display;
   };
 
   uploadAndPush = () => {
     this.setState({ uploading: true });
+    var that = this;
     const { navigate } = this.props.navigation;
     this.uploadImage(
       this.props.navigation.state.params.currentReference,
-      this.props.quality.userId
+      this.props.quality.userId,
+      that
     ).then(currentRefURL => {
-      this.setState({ referenceURL: currentRefURL });
-      this.uploadImage(this.state.image, this.props.quality.userId)
+      this.setState({ referenceURL: currentRefURL, itemNum: 2 });
+      this.uploadImage(this.state.image, this.props.quality.userId, that)
         .then(picURL => {
           this.setState({ pictureURL: picURL });
         })
@@ -85,10 +103,12 @@ class Camera extends Component {
           );
         })
         .then(() => {
-          this.setState({ uploading: false });
-        });
+          this.setState({ uploading: false, itemNum: 1 });
+        })
+        .then(() => navigate("Paint"));
     });
   };
+
   render() {
     const { navigate } = this.props.navigation;
     if (this.state.imagePreview === false) {
@@ -169,13 +189,10 @@ class Camera extends Component {
               onPress={() => this.cancelPreview()}
               style={styles.close}
             >
-              <Text style={{ fontSize: 14, color: "white" }}>
-                {" "}
-                {this.state.progress}{" "}
-              </Text>
+              <Text style={{ fontSize: 14, color: "white" }}>Retake</Text>
             </TouchableOpacity>
           </View>
-          {/* {this.uploadModal()} */}
+          {this.uploadModal()}
           <Image
             style={styles.preview}
             resizeMode={"contain"}

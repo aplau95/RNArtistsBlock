@@ -16,7 +16,7 @@ import {
   setUserId,
   changeQuality,
   retrieveUserImages
-} from "../actions/FriendAction";
+} from "../actions/ActionCreators";
 
 class Login extends Component {
   state = {

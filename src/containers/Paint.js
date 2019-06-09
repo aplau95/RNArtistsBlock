@@ -10,7 +10,7 @@ import {
   Dimensions,
   SafeAreaView,
   TouchableHighlight,
-  Modal
+  ActivityIndicator
 } from "react-native";
 
 // import { AsyncStorage } from "@react-native-community/async-storage";
@@ -42,8 +42,7 @@ class Paint extends Component {
       bodyTextColor: [],
       imageHeight: 100,
       imageWidth: 100,
-      // uploading: false,
-      progress: 0
+      extracting: false
     };
   }
 
@@ -69,6 +68,7 @@ class Paint extends Component {
 
       this.clearArrays();
       getAllSwatches(quality, path, (error, swatches) => {
+        this.setState({ extracting: true });
         if (error) {
           console.log(error);
         } else {
@@ -87,6 +87,7 @@ class Paint extends Component {
               ]
             });
           });
+          this.setState({ extracting: false });
         }
       });
     });
