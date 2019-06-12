@@ -1,0 +1,23 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Login/FIRNoopAuthTokenProvider.m \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Login/FIRNoopAuthTokenProvider.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Login/FAuthTokenProvider.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/FTypedefs.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Api/Private/FTypedefs_Private.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Api/Private/FIRDatabaseQuery_Private.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FRepo.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FRepoInfo.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FPersistentConnection.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Realtime/FConnection.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Realtime/FWebSocketConnection.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/third_party/SocketRocket/FSRWebSocket.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/FUtilities.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/FParsedUrl.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/Utilities/FPath.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDataEventType.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/Tuples/FTupleUserCallback.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FQueryParams.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FRepoManager.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Api/FIRDatabaseConfig.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDatabaseQuery.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDataSnapshot.h

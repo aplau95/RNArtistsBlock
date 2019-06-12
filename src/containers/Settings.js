@@ -7,62 +7,99 @@ import {
   View,
   Button,
   FlatList,
-  TouchableOpacity,
+  TouchableHighlight,
   SafeAreaView
 } from "react-native";
 
 import { connect } from "react-redux";
 import Header from "../components/Header";
-import Slider from "@react-native-community/slider";
+// import Slider from "@react-native-community/slider";
 
 import { bindActionCreators } from "redux";
 import { changeQuality } from "../actions/ActionCreators";
+import firebase from "react-native-firebase";
 
 class Settings extends React.PureComponent {
-  getValue = () => {
-    switch (this.props.quality.current) {
-      case "high":
-        return 2;
-      case "medium":
-        return 1;
+  constructor(props) {
+    super(props);
+    this.state = {
+      lowSelect: "black",
+      mediumSelect: "black",
+      highSelect: "#03a9f4"
+    };
+  }
+
+  change(value) {
+    this.changeSelect(value);
+    this.props.changeQuality(value);
+  }
+
+  changeSelect = quality => {
+    switch (quality) {
       case "low":
-        return 0;
+        this.setState({
+          lowSelect: "#03a9f4",
+          mediumSelect: "black",
+          highSelect: "black"
+        });
+        break;
+      case "medium":
+        this.setState({
+          lowSelect: "black",
+          mediumSelect: "#03a9f4",
+          highSelect: "black"
+        });
+        break;
+      case "high":
+        this.setState({
+          lowSelect: "black",
+          mediumSelect: "black",
+          highSelect: "#03a9f4"
+        });
+        break;
     }
   };
 
-  change(value) {
-    var quality = "low";
-    switch (value) {
-      case 0:
-        quality = "low";
-        break;
-      case 1:
-        quality = "medium";
-        break;
-      case 2:
-        quality = "high";
-        break;
-    }
-    this.props.changeQuality(quality);
-  }
-
+  handleSignOut = () => {
+    const { navigate } = this.props.navigation;
+    firebase
+      .auth()
+      .signOut()
+      .then(() => navigate("Login"));
+  };
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        {/* <View> */}
         <Header title="Settings" />
-        <Text>{this.props.quality.current}</Text>
-        <Slider
-          step={1}
-          value={this.getValue()}
-          style={{ width: 200, height: 40 }}
-          minimumValue={0}
-          maximumValue={2}
-          onValueChange={this.change.bind(this)}
-          minimumTrackTintColor="#FFFFFF"
-          maximumTrackTintColor="#000000"
-        />
-        {/* </View> */}
+        <View style={styles.qualityContainter}>
+          <Text style={styles.extractionText}>Extraction Quality</Text>
+          <View style={styles.buttonContainter}>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={() => this.change("high")}
+            >
+              <Text style={{ color: this.state.highSelect }}>High</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={() => this.change("medium")}
+            >
+              <Text style={{ color: this.state.mediumSelect }}>Medium</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={() => this.change("low")}
+            >
+              <Text style={{ color: this.state.lowSelect }}>Low</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.handleSignOut()}
+        >
+          <Text style={{ fontSize: 16, color: "#03a9f4" }}>Sign Out</Text>
+        </TouchableHighlight>
       </SafeAreaView>
     );
   }
@@ -93,14 +130,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F5FCFF"
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
+  qualityContainter: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "flex-start"
   },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
+  buttonContainter: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  extractionText: {
+    fontSize: 16,
+    alignSelf: "center"
+  },
+  button: {
+    // flex: 1,
+    backgroundColor: "transparent",
+    borderRadius: 5,
+    padding: 15,
+    paddingHorizontal: 20,
+    margin: 20,
+    height: 50
   }
 });

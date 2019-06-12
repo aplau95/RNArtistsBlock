@@ -14,22 +14,21 @@ export default class ListItem extends React.PureComponent {
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.listItem}>
           <Image
-            resizeMode={"contain"}
+            resizeMode={"cover"}
             style={{ width: 200, height: 100 }}
             source={{
               uri: this.props.title.referenceImage
             }}
-            key={this.props.title.referenceImage}
+            // key={this.props.key}
           />
           <Image
-            resizeMode={"contain"}
+            resizeMode={"cover"}
             style={{ width: 200, height: 100 }}
             source={{
               uri: this.props.title.pictureImage
             }}
-            key={this.props.title.pictureImage}
+            // key={this.props.key}
           />
-          {/* <Text style={{ color: textColor }}>{this.props.title}</Text> */}
         </View>
       </TouchableOpacity>
     );

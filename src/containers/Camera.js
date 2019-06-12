@@ -5,7 +5,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Alert
+  Alert,
+  ImageBackground
 } from "react-native";
 import { RNCamera } from "react-native-camera";
 import { SafeAreaView } from "react-navigation";
@@ -114,20 +115,6 @@ class Camera extends Component {
     if (this.state.imagePreview === false) {
       return (
         <SafeAreaView style={styles.container}>
-          <View
-            style={{
-              flex: 0,
-              flexDirection: "row",
-              justifyContent: "flex-start"
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => navigate("Paint")}
-              style={styles.close}
-            >
-              <Text style={{ fontSize: 14, color: "white" }}>Exit Camera</Text>
-            </TouchableOpacity>
-          </View>
           <RNCamera
             ref={ref => {
               this.camera = ref;
@@ -151,8 +138,22 @@ class Camera extends Component {
               console.log(barcodes);
             }}
           >
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                position: "absolute"
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => navigate("Paint")}
+                style={styles.close}
+              >
+                <Text style={{ fontSize: 14, color: "white" }}>Close</Text>
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity
-              // onPress={() => this.props.toggleCamera(false)}
               onPress={this.takePicture.bind(this)}
               style={styles.capture}
             >
@@ -164,40 +165,37 @@ class Camera extends Component {
     } else {
       return (
         <SafeAreaView style={styles.container}>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "space-between"
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => navigate("Paint")}
-              style={styles.close}
-            >
-              <Text style={{ fontSize: 14, color: "white" }}> Close </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.uploadAndPush()}
-              style={styles.close}
-            >
-              <Text style={{ fontSize: 14, color: "white" }}>
-                Select and Upload
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.cancelPreview()}
-              style={styles.close}
-            >
-              <Text style={{ fontSize: 14, color: "white" }}>Retake</Text>
-            </TouchableOpacity>
-          </View>
-          {this.uploadModal()}
-          <Image
+          <ImageBackground
             style={styles.preview}
             resizeMode={"contain"}
             source={{ uri: this.state.image }}
-          />
+          >
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                onPress={() => navigate("Paint")}
+                style={styles.close}
+              >
+                <Text style={{ fontSize: 14, color: "white" }}> Close </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.uploadAndPush()}
+                style={styles.close}
+              >
+                <Text
+                  style={{ textAlign: "center", fontSize: 14, color: "white" }}
+                >
+                  Select and Upload
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.cancelPreview()}
+                style={styles.close}
+              >
+                <Text style={{ fontSize: 14, color: "white" }}>Retake</Text>
+              </TouchableOpacity>
+            </View>
+            {this.uploadModal()}
+          </ImageBackground>
         </SafeAreaView>
       );
     }
@@ -236,25 +234,33 @@ const styles = StyleSheet.create({
   },
   preview: {
     flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center"
+    flexDirection: "column",
+    justifyContent: "space-between"
   },
   capture: {
-    flex: 0,
+    // flex: 1,
     backgroundColor: "#fff",
     borderRadius: 5,
     padding: 15,
     paddingHorizontal: 20,
     alignSelf: "center",
-    margin: 20
+    margin: 20,
+    bottom: 0,
+    position: "absolute"
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    position: "absolute"
   },
   close: {
-    flex: 0,
-    backgroundColor: "black",
+    flex: 1,
+    backgroundColor: "transparent",
     borderRadius: 5,
     padding: 5,
+    width: 20,
     paddingHorizontal: 20,
-    // alignSelf: "left",
     margin: 10
   }
 });

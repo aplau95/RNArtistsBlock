@@ -9,13 +9,15 @@ import {
   FlatList,
   SafeAreaView,
   TouchableOpacity,
-  Image
+  Image,
+  Dimensions
 } from "react-native";
 
 import ListItem from "../components/ListItem";
 import Header from "../components/Header";
 import { connect } from "react-redux";
 
+console.disableYellowBox = true;
 export class Gallery extends Component {
   state = { selected: (new Map(): Map<string, boolean>) };
 
@@ -34,9 +36,11 @@ export class Gallery extends Component {
   _renderItem = ({ item }) => (
     <ListItem
       id={item}
+      width={Dimensions.get("window").width / 2 - 10}
       onPressItem={this._onPressItem}
       selected={!!this.state.selected.get(item.id)}
       title={item}
+      key={item.timestamp}
     />
   );
 

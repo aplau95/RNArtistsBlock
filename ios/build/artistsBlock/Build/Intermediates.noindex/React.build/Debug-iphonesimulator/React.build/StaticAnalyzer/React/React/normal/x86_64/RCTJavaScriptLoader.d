@@ -1,0 +1,30 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTJavaScriptLoader.mm \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/cxxreact/JSBundleType.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Portability.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/portability/Config.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/CPortability.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTMultipartDataTask.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTMultipartStreamReader.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTPerformanceLogger.h

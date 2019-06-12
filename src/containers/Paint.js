@@ -13,16 +13,12 @@ import {
   ActivityIndicator
 } from "react-native";
 
-// import { AsyncStorage } from "@react-native-community/async-storage";
 import firebase from "react-native-firebase";
-const { app } = firebase.storage();
-import uuid from "uuid/v4"; // Import UUID to generate UUID
 import { getAllSwatches } from "react-native-palette";
 import ImagePicker from "react-native-image-picker";
 import { connect } from "react-redux";
 import { capitalize } from "../utils/paintFunctions";
 import { alertMe } from "../utils/utils";
-import Camera from "./Camera";
 
 class Paint extends Component {
   constructor(props) {
@@ -34,8 +30,8 @@ class Paint extends Component {
       canUpdate: false,
       data: null,
       jsonLength: 0,
-      imageUri: require("../../assets/loginLogo.png"),
-      imageSource: require("../../assets/loginLogo.png"),
+      imageUri: null,
+      imageSource: null,
       onDefaultImage: true,
       colors: [],
       population: [],
@@ -45,8 +41,6 @@ class Paint extends Component {
       extracting: false
     };
   }
-
-  componentDidMount() {}
 
   clearArrays = () => {
     this.setState({ colors: [] });
@@ -64,17 +58,27 @@ class Paint extends Component {
       });
       var path = Platform.OS === "ios" ? response.origURL : response.path;
       const source = { uri: response.uri };
-      this.setState({ imageSource: source, imageUri: response.uri });
-
-      this.clearArrays();
-      getAllSwatches(quality, path, (error, swatches) => {
+      if (!response.didCancel) {
+        this.setState({ imageSource: source, imageUri: response.uri });
+        this.clearArrays();
         this.setState({ extracting: true });
-        if (error) {
-          console.log(error);
+        this.getSwatches(quality, path);
+      }
+    });
+  };
+
+  getSwatches = (quality, path) => {
+    getAllSwatches(quality, path, (error, swatches) => {
+      if (error) {
+        alertMe(error);
+      } else {
+        swatches.sort((a, b) => {
+          return b.population - a.population;
+        });
+        if (swatches.length == 1) {
+          alertMe("Error", "Was Unable to Extract Colors");
+          this.setState({ extracting: false });
         } else {
-          swatches.sort((a, b) => {
-            return b.population - a.population;
-          });
           swatches.forEach(swatch => {
             this.setState({ colors: [...this.state.colors, swatch.color] });
             this.setState({
@@ -89,7 +93,7 @@ class Paint extends Component {
           });
           this.setState({ extracting: false });
         }
-      });
+      }
     });
   };
 
@@ -221,7 +225,10 @@ class Paint extends Component {
                   currentReference: this.state.imageUri
                 });
               } else {
-                alertMe("Extracting Image", "Please wait one moment...");
+                alertMe(
+                  "Must Select Reference Photo",
+                  "Please Press Get Photo to Begin..."
+                );
               }
             }}
           >
@@ -229,7 +236,7 @@ class Paint extends Component {
           </TouchableHighlight>
         </View>
         <ImageBackground
-          resizeMode={"center"}
+          resizeMode={"contain"}
           style={{
             flexDirection: "column",
             width: imageViewWidth,
@@ -243,9 +250,23 @@ class Paint extends Component {
           {this.checkDefaultImage()}
         </ImageBackground>
         <Text style={styles.qualityText}>{extractQuality}</Text>
-        <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
-          {this.colorsList(dimensions.width, (windowHeight * 8) / 16)}
-        </View>
+
+        {this.state.extracting ? (
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <ActivityIndicator />
+          </View>
+        ) : (
+          <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
+            {this.colorsList(dimensions.width, (windowHeight * 8) / 16)}
+          </View>
+        )}
       </SafeAreaView>
     );
   }

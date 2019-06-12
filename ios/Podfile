@@ -38,9 +38,6 @@ target 'artistsBlock' do
     inherit! :search_paths
     # Pods for testing
 
-    # pod 'react-native-slider', :path => '../node_modules/@react-native-community/slider'
-
-    # pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
   end
 
@@ -61,7 +58,7 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    if target.name == "React" || target.name == "react-native"
+    if target.name == "react-native"
       target.remove_from_project
     end
   end

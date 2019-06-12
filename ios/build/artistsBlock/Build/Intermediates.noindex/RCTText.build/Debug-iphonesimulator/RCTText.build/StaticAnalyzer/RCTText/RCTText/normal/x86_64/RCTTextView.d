@@ -1,0 +1,26 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/Libraries/Text/Text/RCTTextView.m \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/Libraries/Text/Text/RCTTextView.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/Libraries/Text/Text/RCTTextShadowView.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTLayout.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/Libraries/Text/BaseText/RCTBaseTextShadowView.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/Libraries/Text/RCTTextAttributes.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/build/artistsBlock/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/Libraries/Text/RCTTextTransform.h

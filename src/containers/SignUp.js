@@ -41,12 +41,14 @@ export class SignUp extends Component {
           width={"80%"}
           height={50}
           placeholder={"Email"}
+          secureTextEntry={false}
         />
         <RoundTextInput
           onChangeText={password => this.setState({ password })}
           width={"80%"}
           height={50}
           placeholder={"Password"}
+          secureTextEntry={true}
         />
 
         <Button

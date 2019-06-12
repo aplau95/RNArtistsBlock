@@ -1,0 +1,44 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/transport/metadata.cc \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Target\ Support\ Files/gRPC-Core/gRPC-Core-prefix.pch \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/port_platform.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/port_platform.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/transport/metadata.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/grpc.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/status.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/status.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/byte_buffer.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/byte_buffer.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/grpc_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/compression_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/gpr_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/gpr_slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/slice_buffer.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/sync.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/sync.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/sync_generic.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/atm.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/atm_gcc_atomic.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/sync_posix.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/connectivity_state.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/propagation_bits.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/time.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/debug/trace.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/atm.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gpr/useful.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/compression.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/alloc.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/log.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/log.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/string_util.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gpr/murmur_hash.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gpr/string.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/iomgr/iomgr_internal.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/iomgr/iomgr.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/iomgr/port.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/profiling/timers.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/slice/slice_internal.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/slice/slice_string_helpers.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/transport/static_metadata.h

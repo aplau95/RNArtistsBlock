@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Persistence/FPersistenceManager.m \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/FirebaseCore/FIRLogger.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/FirebaseCore/FIRLoggerLevel.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Persistence/FPersistenceManager.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Snapshot/FNode.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/Utilities/FPath.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Api/Private/FTypedefs_Private.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Snapshot/FCompoundWrite.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FQuerySpec.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FQueryParams.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/FIndex.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FRepoInfo.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Persistence/FStorageEngine.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Persistence/FCachePolicy.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/View/FCacheNode.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Persistence/FLevelDBStorageEngine.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Snapshot/FIndexedNode.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/FNamedNode.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Persistence/FTrackedQueryManager.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Persistence/FTrackedQuery.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/FUtilities.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/FParsedUrl.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Persistence/FPruneForest.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/FClock.h

@@ -1,0 +1,38 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/ScrollView/RCTScrollView.m \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Target\ Support\ Files/React/React-prefix.pch \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/ScrollView/RCTScrollView.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTAutoInsetsProtocol.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTEventDispatcher.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/ScrollView/RCTScrollableProtocol.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTComponent.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTView.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/yoga/Yoga.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/yoga/YGEnums.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/yoga/YGMacros.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/yoga/YGValue.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Modules/RCTUIManager.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Base/RCTRootView.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTViewManager.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/UIView+React.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Modules/RCTUIManagerObserverCoordinator.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Modules/RCTUIManagerUtils.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/UIView+Private.h \
+  /Users/andrewlau/Documents/School/artistsBlock/node_modules/react-native/React/Views/RCTRefreshControl.h

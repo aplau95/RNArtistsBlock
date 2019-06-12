@@ -1,0 +1,33 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-C++/src/cpp/common/secure_create_auth_context.cc \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Target\ Support\ Files/gRPC-C++/gRPC-C++-prefix.pch \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/grpc.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/support/port_platform.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/port_platform.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/status.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/status.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/byte_buffer.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/byte_buffer.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/grpc_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/compression_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/gpr_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/gpr_slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/slice_buffer.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/support/sync.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/sync.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/sync_generic.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/atm.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/atm_gcc_atomic.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/sync_posix.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/connectivity_state.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/impl/codegen/propagation_bits.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/support/time.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/grpc_security.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Public/gRPC-Core/grpc/grpc_security_constants.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-C++/grpcpp/security/auth_context.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-C++/grpcpp/impl/codegen/security/auth_context.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-C++/grpcpp/impl/codegen/config.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-C++/grpcpp/impl/codegen/string_ref.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-C++/src/cpp/common/secure_auth_context.h

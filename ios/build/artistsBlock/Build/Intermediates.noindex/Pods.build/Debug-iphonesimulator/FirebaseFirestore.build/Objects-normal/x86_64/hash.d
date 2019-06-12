@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/hash/internal/hash.cc \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/hash/internal/hash.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/internal/endian.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/config.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/policy_checks.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/internal/unaligned_access.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/attributes.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/port.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/optimization.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/container/fixed_array.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/algorithm/algorithm.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/dynamic_annotations.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/internal/throw_delegate.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/macros.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/container/internal/compressed_tuple.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/utility/utility.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/internal/inline_variable.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/internal/identity.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/base/internal/invoke.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/meta/type_traits.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/memory/memory.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/numeric/int128.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/numeric/int128_have_intrinsic.inc \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/strings/string_view.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/types/optional.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/types/bad_optional_access.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/types/variant.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/types/internal/variant.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/types/bad_variant_access.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseFirestore/Firestore/third_party/abseil-cpp/absl/hash/internal/city.h

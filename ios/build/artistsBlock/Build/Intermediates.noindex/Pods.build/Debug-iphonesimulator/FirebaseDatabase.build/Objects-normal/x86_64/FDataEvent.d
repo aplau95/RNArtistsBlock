@@ -1,0 +1,34 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/View/FDataEvent.m \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/View/FDataEvent.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDataSnapshot.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDatabaseReference.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDatabaseQuery.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDataEventType.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDatabase.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRMutableData.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRTransactionResult.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Public/FIRServerValue.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/Tuples/FTupleUserCallback.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/FTypedefs.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FQueryParams.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/View/FEvent.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/View/FEventRegistration.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/View/FChange.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Snapshot/FNode.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/Utilities/FPath.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Api/Private/FTypedefs_Private.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Snapshot/FIndexedNode.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/FIndex.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/FNamedNode.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Api/Private/FIRDatabaseQuery_Private.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FRepo.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FRepoInfo.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FPersistentConnection.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Realtime/FConnection.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Realtime/FWebSocketConnection.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/third_party/SocketRocket/FSRWebSocket.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/FUtilities.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Utilities/FParsedUrl.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Core/FRepoManager.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/FirebaseDatabase/Firebase/Database/Api/FIRDatabaseConfig.h

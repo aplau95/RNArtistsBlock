@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "981029834623",
+    "firebase_url": "https://artistsblockreactnative.firebaseio.com",
+    "project_id": "artistsblockreactnative",
+    "storage_bucket": "artistsblockreactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981029834623:android:5508fdd8d6d82261",
+        "android_client_info": {
+          "package_name": "com.artistsblock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981029834623-1qkljaknmav6opd5m7brbdpl12v4tdu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVuxm2wGe1B2R_SrDk5B7TDnQwMGpIawQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981029834623-1qkljaknmav6opd5m7brbdpl12v4tdu2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "981029834623-tcl0me0prd461ldj03fa5alh3karb7cb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "artistsBlock"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981029834623:android:5878cc40b94bd611",
+        "android_client_info": {
+          "package_name": "com.artistsblock.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981029834623-1qkljaknmav6opd5m7brbdpl12v4tdu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVuxm2wGe1B2R_SrDk5B7TDnQwMGpIawQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981029834623-1qkljaknmav6opd5m7brbdpl12v4tdu2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "981029834623-tcl0me0prd461ldj03fa5alh3karb7cb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "artistsBlock"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

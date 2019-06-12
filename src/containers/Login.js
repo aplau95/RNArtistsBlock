@@ -85,14 +85,16 @@ class Login extends Component {
           onChangeText={email => this.setState({ email })}
           width={"80%"}
           height={50}
-          placeholder={"Bamgimmeegg@gmail.com"}
+          placeholder={"Email"}
+          secureTextEntry={false}
         />
         <RoundTextInput
           onChangeText={password => this.setState({ password })}
           style={styles.button}
           width={"80%"}
           height={50}
-          placeholder={"pokemaster"}
+          placeholder={"Password"}
+          secureTextEntry={true}
         />
         <Button
           // raised

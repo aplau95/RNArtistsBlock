@@ -1,0 +1,39 @@
+dependencies: \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/transport/service_config.cc \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Target\ Support\ Files/gRPC-Core/gRPC-Core-prefix.pch \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/port_platform.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/port_platform.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/transport/service_config.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/grpc_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/compression_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/gpr_types.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/gpr_slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/status.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/string_util.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gprpp/inlined_vector.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gprpp/memory.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/alloc.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gprpp/ref_counted_ptr.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/json/json.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/json/json_common.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/slice/slice_hash_table.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/log.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/log.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gpr/useful.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gprpp/ref_counted.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/sync.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/sync.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/sync_generic.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/atm.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/atm_gcc_atomic.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/impl/codegen/sync_posix.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/debug/trace.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/support/atm.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gprpp/abstract.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gprpp/debug_location.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/slice/slice_internal.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/slice.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/Headers/Private/gRPC-Core/grpc/slice_buffer.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/gpr/string.h \
+  /Users/andrewlau/Documents/School/artistsBlock/ios/Pods/gRPC-Core/src/core/lib/slice/slice_string_helpers.h
