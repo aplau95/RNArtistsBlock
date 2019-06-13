@@ -53,12 +53,10 @@ class Paint extends Component {
       quality: this.props.quality.current
     };
     ImagePicker.launchImageLibrary({}, response => {
-      this.setState({
-        onDefaultImage: false
-      });
       var path = Platform.OS === "ios" ? response.origURL : response.path;
       const source = { uri: response.uri };
       if (!response.didCancel) {
+        this.setState({ onDefaultImage: false });
         this.setState({ imageSource: source, imageUri: response.uri });
         this.clearArrays();
         this.setState({ extracting: true });
